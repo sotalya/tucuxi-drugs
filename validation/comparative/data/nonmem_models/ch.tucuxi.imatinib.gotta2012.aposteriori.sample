@@ -1,0 +1,21 @@
+$INCLUDE general.header
+
+$PROBLEM IMATINIB Model Predictions Etude PK-PD GIST. A posteriori prediction at sample time.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight gist sex age
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.imatinib.gotta2012.pkmodel
+
+$ERROR
+Y = F + F * EPS(1)
+IPRED=F
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.356; IIV CL
+0.799 0.629; IIV V
+
+$SIGMA 0.3138 STANDARD FIX
+
+$INCLUDE general.aposteriori.sample.footer

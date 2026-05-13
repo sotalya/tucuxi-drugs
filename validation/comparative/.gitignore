@@ -1,0 +1,7 @@
+output/system*
+output/NONMEM_stored_apriori/*.csv
+output/NONMEM_stored_apost/*.csv
+output/NONMEM_stored_percentiles/*.csv
+doc/build
+output/run*
+.idea

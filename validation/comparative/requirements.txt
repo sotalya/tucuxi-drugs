@@ -1,0 +1,2 @@
+../../../tucuxi-python
+lxml

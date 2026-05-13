@@ -1,0 +1,25 @@
+$INCLUDE general.header
+
+$PROBLEM IMATINIB Model Predictions Study PK-PD GIST. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight gist sex age
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.imatinib.gotta2012.pkmodel
+
+$ERROR
+W = 0.318
+Y = F + F * W * ETA(3)
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.356; IIV CL
+0.799 0.629; IIV V
+$OMEGA 1 FIX ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0 FIX
+
+$INCLUDE general.apriori.perc.footer
