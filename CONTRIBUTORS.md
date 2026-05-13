@@ -1,4 +1,4 @@
-Buclin Thierry
-Pétermann Yuan J.
-Ravix Anne
-Thoueille Paul
+- Buclin Thierry
+- Pétermann Yuan J.
+- Ravix Anne
+- Thoueille Paul
