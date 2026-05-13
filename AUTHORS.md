@@ -1,0 +1,1 @@
+Thoma Yann <yann.thoma@heig-vd.ch>

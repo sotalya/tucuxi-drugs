@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd -- "${SCRIPT_DIR}/../.." && pwd)"
+echo "==> Repo root: $REPO_ROOT"
+echo "==> Script dir: $SCRIPT_DIR"
+
+# shellcheck source=/dev/null
+source "$SCRIPT_DIR/common/common.sh"
+# shellcheck source=/dev/null
+source "$SCRIPT_DIR/common/python.sh"
+
+cmd="${1:-help}"
+shift || true
+
+dispatch() {
+  case "$cmd" in
+    help|-h|--help) usage ;;
+    py-env)         source "$SCRIPT_DIR/commands/python_deps.sh"; cmd_py_env "$@" ;;
+    py-deps)        source "$SCRIPT_DIR/commands/python_deps.sh"; cmd_py_deps "$@" ;;
+    setup)          source "$SCRIPT_DIR/commands/setup.sh"; cmd_setup "$@" ;;
+    *) die "Unknown command: $cmd" 2 ;;
+  esac
+}
+
+dispatch "$@"

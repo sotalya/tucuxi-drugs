@@ -1,0 +1,3 @@
+This project does not includes third-party software for drug files usages.
+
+For cross-validation, it uses tucuxi-python.
