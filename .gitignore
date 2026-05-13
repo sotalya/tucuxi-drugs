@@ -1,5 +1,6 @@
 *.pyc
-encours/
+
+.venv
 
 #PyCharm files
 .idea/

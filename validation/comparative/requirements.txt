@@ -1,2 +1,2 @@
-../../../tucuxi-python
+git+https://github.com/sotalya/tucuxi-python.git
 lxml
