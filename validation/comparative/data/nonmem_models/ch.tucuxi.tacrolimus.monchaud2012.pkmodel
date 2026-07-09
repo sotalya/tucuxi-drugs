@@ -1,0 +1,52 @@
+
+$SUB ADVAN6 TOL=3
+
+$MODEL NCOMPARTMENTS=7
+COMP(C1 DEFDOSE) ; The dose goes into comp 1
+COMP(C2)
+COMP(C3)
+COMP(C4)
+COMP(C5)
+COMP(C6 DEFOBS) ; The compartment of interest is comp 6
+COMP(C7)
+
+$PK
+
+TVKtr = THETA(1)
+IF (cysticfibrosis.EQ.1) TVKtr = TVKtr * THETA(8)
+Ktr = TVKtr * EXP(ETA(1))
+
+V1 = THETA(2) * EXP(ETA(2))
+Q = THETA(3) * EXP(ETA(3))
+V2 = THETA(4) * EXP(ETA(4))
+
+TVCL=THETA(5)
+IF (gene_CYP3A45.EQ.1) TVCL = TVCL * THETA(9)
+CL=TVCL * EXP(ETA(5))
+
+K12 = Q/V1
+K21 = Q/V2
+Ke = CL/V1
+
+S6 = V1
+
+$DES
+
+DADT(1)=-Ktr*A(1)
+DADT(2)=Ktr*A(1)-Ktr*A(2)
+DADT(3)=Ktr*A(2)-Ktr*A(3)
+DADT(4)=Ktr*A(3)-Ktr*A(4)
+DADT(5)=Ktr*A(4)-Ktr*A(5)
+DADT(6)=Ktr*A(5)-K12*A(6)-Ke*A(6)+K21*A(7)
+DADT(7)=K12*A(6)-K21*A(7)
+
+
+$THETA (7.06) FIX; 1 Ktr
+$THETA (136) FIX; 2 V1
+$THETA (41.1) FIX; 3 Q
+$THETA (529) FIX; 4 V2
+$THETA (17.5) FIX; 5 CL
+$THETA (1.6) FIX; 6 Additive residual error, in ug/l
+$THETA (0.069) FIX; 7 Proportional residual error
+$THETA (0.47) FIX; 8 CF on Ktr
+$THETA (1.4) FIX; 9 CYP on CL

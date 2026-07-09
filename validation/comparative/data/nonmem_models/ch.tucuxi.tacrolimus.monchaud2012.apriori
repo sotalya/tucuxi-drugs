@@ -1,0 +1,27 @@
+$INCLUDE general.header
+
+$PROBLEM Tacrolimus lung. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV cysticfibrosis gene_CYP3A45
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.tacrolimus.monchaud2012.pkmodel
+
+; No residual error, as we just compute an apriori prediction
+$ERROR
+Y= A(6)/S6
+IPRED=A(6)/S6
+
+
+; No inter-individual variability, as we just compute an apriori prediction
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+
+; No residual error, as we just compute an apriori prediction
+$SIGMA 0 FIXED;
+
+$INCLUDE general.apriori.footer
