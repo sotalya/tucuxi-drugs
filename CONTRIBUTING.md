@@ -16,12 +16,24 @@ Full documentation is available in the [`docs/`](docs/) folder and online at htt
 
 ## Branching and Workflow
 
-- Target branch for contributions: `main` (or the branch specified in the issue/PR).
-- Create a feature or fix branch off `main`:
+When adding a new drug model, do the following:
+- Create a feature branch off `dev`:
+  ```sh
+  git checkout -b dev-<drugid>.<author><year>
+  ```
+- Work on this branch until everything goes well
+- Open a pull request against `dev` with a clear description of what the change does and why.
+
+When working on something else:
+
+- Target branch for contributions: `dev` (or the branch specified in the issue/PR).
+- Create a feature or fix branch off `dev`:
   ```sh
   git checkout -b feat/my-feature
   ```
 - Keep commits focused and atomic. One logical change per commit.
+
+The maintainer is responsible for merging `dev` to `main` when relevant.
 
 ---
 
