@@ -1,0 +1,31 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_LI et al. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV age CLCR bodyweight RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.meropenem.li2006.pkmodel
+
+
+$ERROR
+;W = SQRT(IPRED**2*THETA(8)**2+ THETA(9)**2) 
+
+Y = F + SQRT(F*F*THETA(8)*THETA(8)+ THETA(9)*THETA(9))*ETA(5)
+IPRED = F
+
+
+$OMEGA STANDARD CORRELATION BLOCK(4) FIX
+0.343; ETA CL
+0 0.378; ETA V1
+0 0 0.319; ETA V2
+0 0 0 0.539; ETA Q
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+
+
+$INCLUDE general.apriori.perc.footer

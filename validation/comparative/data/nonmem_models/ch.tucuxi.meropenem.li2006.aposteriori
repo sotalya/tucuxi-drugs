@@ -1,0 +1,24 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_LI et al. A posteriori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV MDV age CLCR bodyweight RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.meropenem.li2006.pkmodel
+
+$ERROR
+W = SQRT(F * F * THETA(8) * THETA(8)  + THETA(9) * THETA(9))
+Y = F + W * EPS(1)
+IPRED=F
+
+$OMEGA STANDARD CORRELATION BLOCK(4) FIX
+0.343; ETA CL
+0 0.378; ETA V1
+0 0 0.319; ETA V2
+0 0 0 0.539; ETA Q
+
+$SIGMA 1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.footer

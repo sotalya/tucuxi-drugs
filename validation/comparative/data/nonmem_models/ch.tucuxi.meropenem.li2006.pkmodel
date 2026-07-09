@@ -1,0 +1,32 @@
+
+$SUB ADVAN3 TRANS4
+
+$PK
+
+TVCL = THETA(1)* ((CLCR/83)**THETA(2))*((age/35)**THETA(3))
+CL=TVCL* EXP(ETA(1))
+
+TVV1  = THETA(4)* ((bodyweight/70)**THETA(5))
+V1=TVV1* EXP(ETA(2))
+
+TVV2 = THETA(6)
+V2=TVV2* EXP(ETA(3))
+
+TVQ = THETA(7)
+Q=TVQ* EXP(ETA(4))
+
+S1=V1/1000
+
+
+$THETA
+14.60 FIX; THETA(1), typical CL 
+0.62 FIX; THETA(2), CLCG effect on CL
+-0.34 FIX; THETA(3), AGE effect on CL
+10.80 FIX; THETA(4), typical V1
+0.99 FIX; THETA(5), WT effect on V1
+12.60 FIX; THETA(6), V2
+18.60 FIX; THETA(7), Q Intercompartmental clearance
+0.188 FIX; THETA(8), RUV proportional
+469 FIX; THETA(9), RUV additive in ug/l (original: mg/l)
+
+

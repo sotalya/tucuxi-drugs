@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version='0.6' xsi:noNamespaceSchemaLocation='drugfile.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <history>
+        <revisions>
+            <revision>
+                <revisionAction>creation</revisionAction>
+                <revisionAuthorName>Wongsathorn Citino</revisionAuthorName>
+                <institution>CRISP CHUV</institution>
+                <email>wongsathorn.citino@etu.unige.ch</email>
+                <date>2021-09-03</date>
+                <comments/>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2021-06-11</date>
+                <comments>
+                    <comment lang='en'>Modified the analyte ID from Meropenem to meropenem, to follow the guidelines</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2021-07-15</date>
+                <comments>
+                    <comment lang='en'>Added a digit to the standard deviation, to better fit the NONMEM model</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2022-12-12</date>
+                <comments>
+                    <comment lang='en'>Modified some descriptions that used an hyphen not supported by Windows even though being comptabile with UTF-8</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Guillaume Jeanneret</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>guillaume.jeanneret@heig-vd.ch</email>
+                <date>2025-08-22</date>
+                <comments>
+                    <comment lang='en'>Added DOI &amp; BibTex references. Harmonized covariate settings.</comment>
+                </comments>
+            </revision>
+        </revisions>
+    </history>
+    <head>
+        <drug>
+            <atcs>
+                <atc>J01DH02</atc>
+            </atcs>
+            <activeSubstances>
+                <activeSubstance>meropenem</activeSubstance>
+            </activeSubstances>
+            <drugName>
+                <name lang='en'>Meropenem</name>
+                <name lang='fr'>Méropénème</name>
+            </drugName>
+            <drugDescription>
+                <desc lang='en'>Meropenem, an intravenous antibiotic of the carbapenem class, is indicated for the treatment of complicated intra-abdominal infections, complicated skin and skin structure infections, and bacterial meningitis in adults, as well as bacterial meningitis in pediatrics. Because of its broad-spectrum activity against both Gram-positive bacteria and Gram-negative bacteria, including Pseudomonas aeruginosa and Acinetobacter species, it is also used for the treatment of other serious nosocomial infections, such as pneumonia and bacteremia, that are often caused by these multidrug-resistant pathogens.</desc>
+                <desc lang='fr'>Le méropénème, un antibiotique intraveineux de la classe des carbapénèmes, est indiqué pour le traitement des infections intra-abdominales compliquées, des infections compliquées de la peau et des structures cutanées, ainsi que de la méningite bactérienne chez l’adulte, et de la méningite bactérienne chez l’enfant. En raison de son activité à large spectre contre les bactéries Gram positives et Gram négatives, y compris Pseudomonas aeruginosa et les espèces d’Acinetobacter, il est également utilisé pour le traitement d’autres infections nosocomiales graves, telles que les pneumonies et les bactériémies, souvent causées par ces pathogènes multi-résistants.</desc>
+            </drugDescription>
+            <tdmStrategy>
+                <text lang='en'>To be determined.</text>
+                <text lang='fr'>To be completed.</text>
+            </tdmStrategy>
+        </drug>
+        <study>
+            <studyName>
+                <name lang='en'>Population Pharmacokinetic Analysis and Dosing Regimen Optimization of Meropenem in Adult Patients</name>
+            </studyName>
+            <studyAuthors>Chonghua Li, Joseph L. Kuti, Charles H. Nightingale, David P. Nicolau</studyAuthors>
+            <description>
+                <desc lang='en'>The objectives of this study were to develop a meropenem population pharmacokinetic model using patient data and use it to explore alternative dosage regimens that could optimize the currently used dosing regimen to achieve higher likelihood of pharmacodynamic exposure against pathogenic bacteria. We gathered concentration data from 79 patients (ages 18-93 years) who received meropenem 0.5, 1, or 2 g over 0.5- or 3-hour infusion every 8 hours. Meropenem population pharmacokinetic analysis was performed using the NONMEM program. A 2-compartment model fit the data best. Creatinine clearance, age, and body weight were the most significant covariates to affect meropenem pharmacokinetics. Monte Carlo simulation was applied to mimic the concentration-time profiles while 1 g meropenem was administrated via infusion over 0.5, 1, 2, and 3 hours. The 3-hour prolonged infusion improved the likelihood of obtaining both bacteriostatic and bactericidal exposures most notably at the current susceptibility breakpoints.</desc>
+            </description>
+            <references>
+                <reference type='bibtex'>
+                    <![CDATA[@article{Li2006,
+                                                              title = {Population Pharmacokinetic Analysis and Dosing Regimen Optimization of Meropenem in Adult Patients},
+                                                              journal = {Journal of Clinical Pharmacology},
+                                                              volume = {46},
+                                                              number = {10},
+                                                              pages = {1171--1178},
+                                                              year = {2006},
+                                                              doi = {10.1177/0091270006291035},
+                                                              url = {https://doi.org/10.1177/0091270006291035},
+                                                              author = {Chonghua Li and Joseph L. Kuti and Charles H. Nightingale and David P. Nicolau},
+                                                              keywords = {Meropenem, Pharmacocinétique, Modélisation, Dosage, Simulation de Monte Carlo},
+                                                              abstract = {Les objectifs de cette étude étaient de développer un modèle de pharmacocinétique de population pour le méropénem à l'aide de données de patients et de l'utiliser pour explorer des schémas posologiques alternatifs susceptibles d'optimiser le schéma posologique actuellement utilisé afin d'obtenir une exposition pharmacodynamique plus élevée contre les bactéries pathogènes. Nous avons recueilli des données de concentration provenant de 79 patients (âgés de 18 à 93 ans) ayant reçu du méropénem à des doses de 0,5, 1 ou 2 g administrées par perfusion sur 0,5 ou 3 heures toutes les 8 heures. L'analyse pharmacocinétique de population a été réalisée à l'aide du programme NONMEM. Un modèle à deux compartiments a le mieux décrit les données. La clairance de la créatinine, l'âge et le poids corporel étaient les covariables les plus significatives influençant la pharmacocinétique du méropénem. Une simulation de Monte Carlo a été appliquée pour simuler les profils de concentration-temps lors de l'administration de 1 g de méropénem par perfusion sur 0,5, 1, 2 et 3 heures. La perfusion prolongée sur 3 heures a amélioré la probabilité d'obtenir des expositions bactéristatiques et bactéricides, notamment aux points de rupture de sensibilité actuels.}
+                                                            }]]>
+                </reference>
+                <reference type='doi'>
+                    <![CDATA[https://doi.org/10.1177/0091270006291035]]>
+                </reference>
+            </references>
+        </study>
+        <comments/>
+    </head>
+    <drugModel>
+        <drugId>Meropenem</drugId>
+        <drugModelId>ch.tucuxi.meropenem.li2006</drugModelId>
+        <domain>
+            <description>
+                <desc lang='en'>Adult patients treated with meropenem for intra-abdominal infections, community-acquired pneumonia, or ventilator-associated pneumonia, aged 18-93 years, weight 40-127 kg.</desc>
+            </description>
+            <constraints>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population aged from 18 to 93 years.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population agée de 18 à 93 ans.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((age >= 18) && (age <= 93));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population weighing between 40 and 127 kg.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population pesant entre 40 et 127 kg.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>bodyweight</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((bodyweight >= 40) && (bodyweight <= 127));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+            </constraints>
+        </domain>
+        <covariates>
+            <covariate>
+                <covariateId>age</covariateId>
+                <covariateName>
+                    <name lang='en'>age</name>
+                    <name lang='en'>âge</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s age in years.</desc>
+                    <desc lang='fr'>Âge du patient en années.</desc>
+                </description>
+                <unit>y</unit>
+                <covariateType>ageInYears</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>y</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>35</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Age must be positive.</text>
+                        <text lang='fr'>L&apos;âge doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (age >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>clcr</covariateId>
+                <covariateName>
+                    <name lang='en'>creatinine clearance</name>
+                    <name lang='fr'>clairance de la créatinine</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s creatinine clearance in mL/min.</desc>
+                    <desc lang='fr'>Clairance de la créatinine du patient en mL/min.</desc>
+                </description>
+                <unit>ml/min</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>83</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Creatinine clearance must be positive.</text>
+                        <text lang='fr'>La clairance de la créatinine doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (clcr > 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>bodyweight</covariateId>
+                <covariateName>
+                    <name lang='en'>body weight</name>
+                    <name lang='fr'>poids</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s bodyweight in kg.</desc>
+                    <desc lang='fr'>Poids du patient en kg.</desc>
+                </description>
+                <unit>kg</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>70</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Body weight must be positive.</text>
+                        <text lang='fr'>Le poids doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (bodyweight >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+        </covariates>
+        <activeMoieties>
+            <activeMoiety>
+                <activeMoietyId>meropenem</activeMoietyId>
+                <activeMoietyName>
+                    <name lang='en'>Meropenem</name>
+                </activeMoietyName>
+                <unit>mg/l</unit>
+                <analyteIdList>
+                    <analyteId>meropenem</analyteId>
+                </analyteIdList>
+                <analytesToMoietyFormula>
+                    <hardFormula>direct</hardFormula>
+                    <comments/>
+                </analytesToMoietyFormula>
+                <targets>
+                    <target>
+                        <targetType>residual</targetType>
+                        <targetValues>
+                            <unit>mg/l</unit>
+                            <min>
+                                <standardValue>2</standardValue>
+                            </min>
+                            <max>
+                                <standardValue>8</standardValue>
+                            </max>
+                            <best>
+                                <standardValue>4</standardValue>
+                            </best>
+                            <toxicityAlarm>
+                                <standardValue>30</standardValue>
+                            </toxicityAlarm>
+                            <inefficacyAlarm>
+                                <standardValue>2</standardValue>
+                            </inefficacyAlarm>
+                        </targetValues>
+                        <comments/>
+                    </target>
+                </targets>
+            </activeMoiety>
+        </activeMoieties>
+        <analyteGroups>
+            <analyteGroup>
+                <groupId>meropenem</groupId>
+                <pkModelId>linear.2comp.macro</pkModelId>
+                <analytes>
+                    <analyte>
+                        <analyteId>meropenem</analyteId>
+                        <unit>mg/l</unit>
+                        <molarMass>
+                            <value>383.463</value>
+                            <unit>g/mol</unit>
+                        </molarMass>
+                        <description>
+                            <desc lang='en'>Meropenem is the only active compound</desc>
+                        </description>
+                        <errorModel>
+                            <errorModelType>mixed</errorModelType>
+                            <sigmas>
+                                <sigma>
+                                    <standardValue>0.469</standardValue>
+                                </sigma>
+                                <sigma>
+                                    <standardValue>0.188</standardValue>
+                                </sigma>
+                            </sigmas>
+                            <comments/>
+                        </errorModel>
+                        <comments/>
+                    </analyte>
+                </analytes>
+                <dispositionParameters>
+                    <parameters>
+                        <parameter>
+                            <parameterId>CL</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>14.6</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>clcr</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>age</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            CLCReff=Math.pow(clcr/83,0.62);
+                                            AGEeff=Math.pow(age/35,-0.34);
+                                            TVCL=14.60 * CLCReff * AGEeff;
+                                            return TVCL;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>lognormal</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.343</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>Individual clearance must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>CL</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return CL > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V1</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>10.8</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            BWeff=Math.pow(bodyweight/70, 0.99);
+                                                                                                    TVV1= 10.80 * BWeff;
+                                                                                                    return TVV1;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>lognormal</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.378</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>individual central volume must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V1</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V1 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V2</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>12.6</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>lognormal</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.319</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>individual peripheral volume distribution must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V2</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V2 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>Q</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>18.6</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>lognormal</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.539</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>intercompartimental clearance must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>Q</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return Q > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                    </parameters>
+                    <correlations />
+                </dispositionParameters>
+            </analyteGroup>
+        </analyteGroups>
+        <formulationAndRoutes>
+            <formulationAndRoute>
+                <formulationAndRouteId>id0</formulationAndRouteId>
+                <formulation>parenteralSolution</formulation>
+                <administrationName>IV</administrationName>
+                <administrationRoute>intravenousDrip</administrationRoute>
+                <absorptionModel>infusion</absorptionModel>
+                <dosages>
+                    <analyteConversions>
+                        <analyteConversion>
+                            <analyteId>meropenem</analyteId>
+                            <factor>1</factor>
+                        </analyteConversion>
+                    </analyteConversions>
+                    <availableDoses>
+                        <unit>mg</unit>
+                        <default>
+                            <standardValue>1000</standardValue>
+                        </default>
+                        <rangeValues>
+                            <from>
+                                <standardValue>500</standardValue>
+                            </from>
+                            <to>
+                                <standardValue>2000</standardValue>
+                            </to>
+                            <step>
+                                <standardValue>250</standardValue>
+                            </step>
+                        </rangeValues>
+                        <fixedValues />
+                    </availableDoses>
+                    <availableIntervals>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>8</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>4</value>
+                            <value>6</value>
+                            <value>8</value>
+                            <value>12</value>
+                            <value>24</value>
+                        </fixedValues>
+                    </availableIntervals>
+                    <availableInfusions>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>0.5</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>0.5</value>
+                            <value>1</value>
+                            <value>2</value>
+                            <value>3</value>
+                            <value>0</value>
+                        </fixedValues>
+                    </availableInfusions>
+                    <comments/>
+                </dosages>
+                <absorptionParameters>
+                </absorptionParameters>
+            </formulationAndRoute>
+        </formulationAndRoutes>
+        <timeConsiderations>
+            <halfLife>
+                <unit>h</unit>
+                <duration>
+                    <standardValue>1</standardValue>
+                </duration>
+                <multiplier>1000</multiplier>
+                <comments>
+                    <comment lang='en'>half-life very short</comment>
+                </comments>
+            </halfLife>
+            <outdatedMeasure>
+                <unit>d</unit>
+                <duration>
+                    <standardValue>30</standardValue>
+                </duration>
+                <comments>
+                    <comment lang='en'>half-life very short</comment>
+                </comments>
+            </outdatedMeasure>
+        </timeConsiderations>
+        <comments/>
+    </drugModel>
+</model>
