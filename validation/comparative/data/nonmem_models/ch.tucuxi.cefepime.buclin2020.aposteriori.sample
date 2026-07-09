@@ -1,0 +1,28 @@
+; Cefepime model
+; Written by Yann Thoma
+; Final version : 27.02.2021
+
+$INCLUDE general.header
+
+$PROBLEM Cefepime model. A posteriori prediction at sample time.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight sex age creatinine RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.cefepime.buclin2020.pkmodel
+
+$ERROR
+Y= F * (1 + EPS(1) * 0.20)
+IPRED = F
+
+
+$OMEGA STANDARD CORRELATION BLOCK(3) FIX
+0.45 ; CL
+0.0 0.5 ; V1
+0 0 0.35 ; V2
+
+$SIGMA
+1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.sample.footer

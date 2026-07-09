@@ -1,0 +1,32 @@
+; Cefepime model
+; Written by Yann Thoma
+; Final version : 27.02.2021
+
+$INCLUDE general.header
+
+$PROBLEM Cefepime model. A priori percentiles.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight sex age creatinine RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.cefepime.buclin2020.pkmodel
+
+
+$ERROR
+;Y= F * EXP(ETA(4) * 0.20)
+Y= F + F *(ETA(4) * 0.20)
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+$OMEGA STANDARD CORRELATION BLOCK(3) FIX
+0.45 ; CL
+0.0 0.5 ; V1
+0 0 0.35 ; V2
+
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+$INCLUDE general.apriori.perc.footer

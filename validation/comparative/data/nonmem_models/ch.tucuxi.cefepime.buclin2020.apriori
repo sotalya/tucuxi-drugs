@@ -1,0 +1,30 @@
+; Cefepime model
+; Written by Yann Thoma
+; Final version : 27.02.2021
+
+$INCLUDE general.header
+
+$PROBLEM Cefepime model. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight sex age creatinine RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.cefepime.buclin2020.pkmodel
+
+; No residual error, as we just compute an apriori prediction
+$ERROR
+Y=F
+IPRED=F
+
+
+; No inter-individual variability, as we just compute an apriori prediction
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+$OMEGA 0.0 STANDARD FIX
+
+; No residual error, as we just compute an apriori prediction
+$SIGMA 0 FIXED;
+
+$INCLUDE general.apriori.footer

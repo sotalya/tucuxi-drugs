@@ -1,0 +1,27 @@
+; Cefepime model
+; Written by Yann Thoma
+; Final version : 27.02.2021
+;
+; This file contains the PK model, and is meant to be included by other
+; files for specific calculations
+
+; 2-compartments model with infusion
+$SUB ADVAN3 TRANS4
+
+$PK
+
+clcreat = 0.06 * (1.04 + 0.19 * sex) * bodyweight * (140 - age) / creatinine;
+
+TVCL = 0.9 + 0.85 * clcreat;
+CL = TVCL * (1 + ETA(1))
+
+TVV1 = 0.2 * bodyweight;
+V1 = TVV1 * (1 + ETA(2))
+
+TVV2 = 14;
+V2 = TVV2 * (1 + ETA(3))
+
+TVQ = 17;
+Q = TVQ
+
+S1 = V1 / 1000

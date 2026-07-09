@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version='0.6' xsi:noNamespaceSchemaLocation='drugfile.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <history>
+        <revisions>
+            <revision>
+                <revisionAction>creation</revisionAction>
+                <revisionAuthorName>Thierry Buclin</revisionAuthorName>
+                <institution>Service de Pharmacologie clinique, Centre Hospitalier Universitaire Vaudois, Lausanne (Switzerland)</institution>
+                <email>Thierry.Buclin@CHUV.ch</email>
+                <date>2019-09-13</date>
+                <comments>
+                    <comment lang='en'>This model has been elaborated based on a systematic review and meta-analysis of 11 population PK studies published on cefepime in adults patients.</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2020-03-27</date>
+                <comments>
+                    <comment lang='en'>Modified the MIC to adhere to the xsd description.</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Guillaume Jeanneret</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>guillaume.jeanneret@heig-vd.ch</email>
+                <date>2025-08-22</date>
+                <comments>
+                    <comment lang='en'>Harmonized covariate settings.</comment>
+                </comments>
+            </revision>
+        </revisions>
+    </history>
+    <head>
+        <drug>
+            <atcs>
+                <atc>J01DE01</atc>
+            </atcs>
+            <activeSubstances>
+                <activeSubstance>cefepime</activeSubstance>
+            </activeSubstances>
+            <drugName>
+                <name lang='en'>Cefepime</name>
+                <name lang='fr'>Céfépime</name>
+            </drugName>
+            <drugDescription>
+                <desc lang='en'>Cefepime is a fourth generation cephalosporins active against gram-positive cocci and a broad array of gram-negative bacteria, including P. aeruginosa and Enterobacteriaceae with inducible chromosomal beta-lactamases. Its bactericidal activity is time-dependent and considered optimal if free plasma concentrations are kept above 4 times the MIC of the targeted infectious agent (MIC&lt;=1 mg/L for most sensitive bacterias) over 100% of the dosing interval. However, severe neurological toxicity may occur if trough concentrations exceed 20 mg/L under intermittent injections or 40 mg/L under constant infusion.</desc>
+                <desc lang='fr'>&quot;Le céfépime est une céphalosporine de quatrième génération, active contre les cocci Gram positifs et un large éventail de bactéries Gram négatives, y compris P. aeruginosa et les Enterobacteriaceae possédant des bêta-lactamases chromosomiques inductibles. Son activité bactéricide dépend du temps et est considérée optimale si les concentrations plasmatiques libres restent supérieures à 4 fois la CIM de l’agent infectieux ciblé (CIM ≤ 1 mg/L pour la plupart des bactéries sensibles) pendant 100 % de l’intervalle de dosage. Cependant, une toxicité neurologique sévère peut survenir si les concentrations résiduelles dépassent 20 mg/L lors d’injections intermittentes ou 40 mg/L lors d’une perfusion continue.</desc>
+            </drugDescription>
+            <tdmStrategy>
+                <text lang='en'>A trough plasma or serum concentration should be measured at steady-state, i.e. practically after at least 3 doses, in most patients receiving cefepime for a critical condition such as sepsis, febrile neutropenia, severe pneumonia or lung infection in cystic fibrosis. Optimal treatment efficacy is considered warranted if concentrations are maintained above 4 times the MIC of the targeted bacteria, i.e. if the trough conentration is above this threshold. In the absence of information on the actual MIC of the strain involved in a patient&apos;s infection, an empirical MIC of 1 mg/L is usually considered, corresponding to a target of 4 mg/L for the trough concentration.
+                    
+                                                                                In case of uncertainty regarding renal function, TDM will contribute to adjust the dosage and prevent cefepime accumulation and neurotoxicity. On the other hand, TDM may enable to increase the dosing frequency in patients with glomerular hyperfiltration, thus preventing insufficient concentration exposure, emergence of bacterial resistance and treatment failure. Further TDM checkings are dictated by the clinical evolution of the patient (course of infection, renal function, toxic symptoms), but a more than biweekly frequency of TDM is probably useless.</text>
+                <text lang='fr'>Une concentration plasmatique ou sérique résiduelle doit être mesurée à l’état d’équilibre, c’est-à-dire généralement après au moins 3 doses, chez la plupart des patients recevant du céfépime pour une affection critique telle que le sepsis, la neutropénie fébrile, une pneumonie sévère ou une infection pulmonaire dans la mucoviscidose. L’efficacité optimale du traitement est considérée comme assurée si les concentrations restent supérieures à 4 fois la CIM de la bactérie ciblée, c’est-à-dire si la concentration résiduelle dépasse ce seuil. En l’absence d’informations sur la CIM réelle de la souche impliquée dans l’infection du patient, une CIM empirique de 1 mg/L est généralement retenue, correspondant à un objectif de 4 mg/L pour la concentration résiduelle.</text>
+            </tdmStrategy>
+        </drug>
+        <study>
+            <studyName>
+                <name lang='en'>Systematic review and meta-analysis of 11 population PK studies of cefepime (unpublished to date)</name>
+            </studyName>
+            <studyAuthors>T. Buclin &amp; al.</studyAuthors>
+            <description>
+                <desc lang='en'>This systematic review and meta-analysis of cefepime population PK identified 11 studies conducted in 353 patients totalizing 3899 plasma/serum samples. Population PK parameters were summarized through careful selection and weighing of estimates reported in those studies. Detailed data available on request.</desc>
+            </description>
+            <references/>
+        </study>
+        <comments>
+            <comment lang='en'>This model was elaborated initially to be used in a retrospective study on the modalities of cefepime TDM in febrile neutropenic patients. But it can be used for clinical purposes in various types of adult patients receiving cefepime. Hoverver, it does not apply to patients receiving any renal replacement therapy such as CRRT or intermittent HD. Neither does it cover paediatric patients.</comment>
+        </comments>
+    </head>
+    <drugModel>
+        <drugId>cefepime</drugId>
+        <drugModelId>ch.tucuxi.cefepime.buclin2020</drugModelId>
+        <domain>
+            <description>
+                <desc lang='en'>Adult patients not receiving renal replacement therapy, aged 18-89 years, weight 40-160 kg.</desc>
+                <desc lang='fr'>Patients adultes ne recevant pas de traitement de remplacement rénal, âgés de 18 à 89 ans, pesant de 40 à 160 kg.</desc>
+            </description>
+            <constraints>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population aged from 18 to 89 years.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population agée de 18 à 89 ans.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((age >= 18) && (age <= 89));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>soft</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population weighing between 40 and 160 kg.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population pesant entre 40 et 160 kg.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>bodyweight</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((bodyweight >= 40) && (bodyweight <= 160));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+            </constraints>
+        </domain>
+        <covariates>
+            <covariate>
+                <covariateId>bodyweight</covariateId>
+                <covariateName>
+                    <name lang='en'>body weight</name>
+                    <name lang='fr'>poids</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s body weight in kg.</desc>
+                    <desc lang='fr'>Poids du patient en kg.</desc>
+                </description>
+                <unit>kg</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>70</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Body weight must be positive.</text>
+                        <text lang='fr'>Le poids doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (bodyweight >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>sex</covariateId>
+                <covariateName>
+                    <name lang='en'>sex</name>
+                    <name lang='fr'>sexe</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>It indicates if the patient is a male (=0), a female (=1), or unknown (=0.5). The default value is 0.5.</desc>
+                    <desc lang='fr'>Cela indique si le patien est un homme (=0), une femme (=1), ou inconnu (=0.5). La valeur par défaut est 0.5.</desc>
+                </description>
+                <unit>
+                </unit>
+                <covariateType>sex</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>direct</interpolationType>
+                <covariateValue>
+                    <standardValue>0.5</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Sex must be 0, 0.5, or 1.</text>
+                        <text lang='fr'>Le sexe doit être 0, 0.5 ou 1.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>sex</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((sex == 0) || (sex == 0.5) || (sex == 1));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>age</covariateId>
+                <covariateName>
+                    <name lang='en'>age</name>
+                    <name lang='en'>âge</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s age in years.</desc>
+                    <desc lang='fr'>Âge du patient en années.</desc>
+                </description>
+                <unit>y</unit>
+                <covariateType>ageInYears</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>y</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>50</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Age must be positive.</text>
+                        <text lang='fr'>L&apos;âge doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (age >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>creatinine</covariateId>
+                <covariateName>
+                    <name lang='en'>serum creatinine concentration</name>
+                    <name lang='fr'>concentration de sérum créatinine</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s serum creatinine concentration in umol/L.</desc>
+                    <desc lang='fr'>Concentration de sérum créatinine du patient en umol/L.</desc>
+                </description>
+                <unit>µmol/l</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>80</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Serum creatinine concentration must be positive.</text>
+                        <text lang='fr'>La concentration de sérum créatinine doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>creatinine</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (scr >= 0);								
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments>
+                    <comment lang='en'>The validation still needs to be defined more precisely.</comment>
+                </comments>
+            </covariate>
+        </covariates>
+        <activeMoieties>
+            <activeMoiety>
+                <activeMoietyId>cefepime</activeMoietyId>
+                <activeMoietyName>
+                    <name lang='en'>Cefepime</name>
+                </activeMoietyName>
+                <unit>mg/l</unit>
+                <analyteIdList>
+                    <analyteId>cefepime</analyteId>
+                </analyteIdList>
+                <analytesToMoietyFormula>
+                    <hardFormula>direct</hardFormula>
+                    <comments/>
+                </analytesToMoietyFormula>
+                <targets>
+                    <target>
+                        <targetType>residual</targetType>
+                        <targetValues>
+                            <unit>mg/l</unit>
+                            <min>
+                                <standardValue>4</standardValue>
+                            </min>
+                            <max>
+                                <standardValue>16</standardValue>
+                            </max>
+                            <best>
+                                <standardValue>8</standardValue>
+                            </best>
+                            <toxicityAlarm>
+                                <standardValue>20</standardValue>
+                            </toxicityAlarm>
+                            <inefficacyAlarm>
+                                <standardValue>1</standardValue>
+                            </inefficacyAlarm>
+                        </targetValues>
+                        <comments>
+                            <comment lang='en'>Trough concentrations higher than 20 mg/L are associated with a significant risk of neurological toxicity. Trough concentrations below the MIC of the targeted bacteria increase the risk of treatment failure with selection of resistant bacterial strains.</comment>
+                        </comments>
+                    </target>
+                </targets>
+            </activeMoiety>
+        </activeMoieties>
+        <analyteGroups>
+            <analyteGroup>
+                <groupId>cefepime</groupId>
+                <pkModelId>linear.2comp.macro</pkModelId>
+                <analytes>
+                    <analyte>
+                        <analyteId>cefepime</analyteId>
+                        <unit>mg/l</unit>
+                        <molarMass>
+                            <value>480.56</value>
+                            <unit>g/mol</unit>
+                        </molarMass>
+                        <description>
+                            <desc lang='en'>Cefepime is the only active component of the antibiotic, it is almost not metabolized and not transformed into any active derivative.</desc>
+                        </description>
+                        <errorModel>
+                            <errorModelType>proportional</errorModelType>
+                            <sigmas>
+                                <sigma>
+                                    <standardValue>0.2</standardValue>
+                                </sigma>
+                            </sigmas>
+                            <comments/>
+                        </errorModel>
+                        <comments/>
+                    </analyte>
+                </analytes>
+                <dispositionParameters>
+                    <parameters>
+                        <parameter>
+                            <parameterId>CL</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>6</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>creatinine</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>age</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>sex</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            clcreat = 0.06 * (1.04 + 0.19 * sex) * bodyweight * (140 - age) / creatinine;
+                                            
+                                            TVCL = 0.9 + 0.85 * clcreat;
+                                            
+                                            return TVCL;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>proportional</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.45</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>Calculated CL must be positive !</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>CL</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return CL > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V1</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>14</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            											TVV1 = 0.2 * bodyweight;
+                                            											return TVV1;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>proportional</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.5</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>Calculated V1 must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V1</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V1 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V2</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>14</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>proportional</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.35</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>Calculated V2 must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V2</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V2 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>Q</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>17</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>none</bsvType>
+                                <stdDevs />
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>Error in PK parameter (Q).</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>Q</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return Q > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                    </parameters>
+                    <correlations />
+                </dispositionParameters>
+            </analyteGroup>
+        </analyteGroups>
+        <formulationAndRoutes>
+            <formulationAndRoute>
+                <formulationAndRouteId>id0</formulationAndRouteId>
+                <formulation>parenteralSolution</formulation>
+                <administrationName>intravenous infusion</administrationName>
+                <administrationRoute>intravenousDrip</administrationRoute>
+                <absorptionModel>infusion</absorptionModel>
+                <dosages>
+                    <analyteConversions>
+                        <analyteConversion>
+                            <analyteId>cefepime</analyteId>
+                            <factor>1</factor>
+                        </analyteConversion>
+                    </analyteConversions>
+                    <availableDoses>
+                        <unit>mg</unit>
+                        <default>
+                            <standardValue>2000</standardValue>
+                        </default>
+                        <rangeValues>
+                            <from>
+                                <standardValue>500</standardValue>
+                            </from>
+                            <to>
+                                <standardValue>8000</standardValue>
+                            </to>
+                            <step>
+                                <standardValue>500</standardValue>
+                            </step>
+                        </rangeValues>
+                        <fixedValues />
+                    </availableDoses>
+                    <availableIntervals>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>8</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>4</value>
+                            <value>6</value>
+                            <value>8</value>
+                            <value>12</value>
+                            <value>24</value>
+                            <value>48</value>
+                            <value>72</value>
+                        </fixedValues>
+                    </availableIntervals>
+                    <availableInfusions>
+                        <unit>min</unit>
+                        <default>
+                            <standardValue>30</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>30</value>
+                            <value>120</value>
+                        </fixedValues>
+                    </availableInfusions>
+                    <comments/>
+                </dosages>
+                <absorptionParameters>
+                </absorptionParameters>
+            </formulationAndRoute>
+        </formulationAndRoutes>
+        <timeConsiderations>
+            <halfLife>
+                <unit>h</unit>
+                <duration>
+                    <standardValue>2</standardValue>
+                </duration>
+                <multiplier>40</multiplier>
+                <comments>
+                    <comment lang='en'>Steady-state is considered to be reached in &lt;96 h in all cases</comment>
+                </comments>
+            </halfLife>
+            <outdatedMeasure>
+                <unit>d</unit>
+                <duration>
+                    <standardValue>7</standardValue>
+                </duration>
+                <comments>
+                    <comment lang='en'>TDM values collected more than 7 days ago are considered not to be informative anymore</comment>
+                </comments>
+            </outdatedMeasure>
+        </timeConsiderations>
+        <comments/>
+    </drugModel>
+</model>
