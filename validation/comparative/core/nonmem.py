@@ -702,6 +702,7 @@ class Nonmem:
                     :param drug:
                 * with_mdv (bool): If yes, add an MDV field after DV
         """
+        is_at_steady_state = query.dosageSteadyState
         for d in query.drugs[0].dosageHistory.dosageTimeRanges:
             # pdb.set_trace()
             dend = d.end
@@ -728,13 +729,14 @@ class Nonmem:
 
                 dose_date = dstart + timedelta(hours=cycle * float(interval))
                 self.load_covariates_for_cycle(query, covariate_values, inkstart, request, drug, dose_date)
-                if ss:
+                if is_at_steady_state:
                     if with_mdv:
-                        items = [1, inkstart, 4, d.dosage.dose.value, '.', 1, d.dosage.interval, '.', '1'] \
+                        items = [1, inkstart, 4, d.dosage.dose.value, '.', 1, interval, '.', '1'] \
                                 + covariate_values
                     else:
-                        items = [1, inkstart, 4, d.dosage.dose.value, '.', 1, d.dosage.interval, '.'] \
+                        items = [1, inkstart, 4, d.dosage.dose.value, '.', 1, interval, '.'] \
                                 + covariate_values
+                    is_at_steady_state = False
                 else:
                     if with_mdv:
                         items = [1, inkstart, 1, d.dosage.dose.value, cmt, 0, '.', '.', '1'] + covariate_values

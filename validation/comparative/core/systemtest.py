@@ -85,6 +85,10 @@ class SystemTester:
             if soup.query:
                 try:
                     query = Query(soup)
+                    if content.find('<dosageSteadyState>') == -1:
+                        query.dosageSteadyState = False
+                    else:
+                        query.dosageSteadyState = True
                     query.sourceFile = os.path.abspath(filenamepath)
                     self.query_dict[filename] = query
                     print("Imported query file " + filenamepath)
