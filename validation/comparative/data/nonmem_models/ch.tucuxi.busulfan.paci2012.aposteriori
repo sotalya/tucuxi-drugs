@@ -1,0 +1,22 @@
+$INCLUDE general.header
+
+$PROBLEM Busulfan for children. A posteriori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV MDV age bodyweight RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.busulfan.paci2012.pkmodel
+
+$ERROR
+W = SQRT(F * F * THETA(6) * THETA(6) + THETA(5) * THETA(5))
+Y = F + W * EPS(1)
+IPRED=F
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.23; IIV CL
+0.0 0.22; IIV V
+
+$SIGMA 1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.footer

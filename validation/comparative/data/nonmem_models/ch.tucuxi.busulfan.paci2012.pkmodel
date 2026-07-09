@@ -1,0 +1,24 @@
+
+$SUB ADVAN1 TRANS2
+
+$PK
+
+theta_bw = 0.76;
+IF (bodyweight.LT.9) theta_bw = 1.25;
+
+TVCL = THETA(1) * (bodyweight / 9.0) ** theta_bw;
+CL=TVCL * (1 + ETA(1))
+
+TVV=bodyweight ** THETA(4)
+V=TVV * (1 + ETA(2))
+
+S1 = V/1000
+
+
+$THETA
+2.18 FIX; 1 CL
+1.25 FIX; 2 bodyweight on CL if < 9 kg
+0.76 FIX; 3 bodyweight on CL if > 9 kg
+0.86 FIX; 4 bodyweight on V
+57 FIX;   5 Sigma additive
+0.11 FIX; 6 Sigma proportional

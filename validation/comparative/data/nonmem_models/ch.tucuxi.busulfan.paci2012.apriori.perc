@@ -1,0 +1,24 @@
+$INCLUDE general.header
+
+$PROBLEM Busulfan for children. A priori percentiles.
+
+$INPUT ID TIME EVID AMT CMT SS II DV age bodyweight RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.busulfan.paci2012.pkmodel
+
+$ERROR
+Y = F + ETA(3) * SQRT(F * F * THETA(6) * THETA(6)  + THETA(5) * THETA(5))
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.23; IIV CL
+0.0 0.22; IIV V
+$OMEGA 1 FIX ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0 FIX
+
+$INCLUDE general.apriori.perc.footer
