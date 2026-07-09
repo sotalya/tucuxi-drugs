@@ -1,0 +1,22 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_Chen et al. A posteriori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV MDV bodyweight CLCR age RATE 
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.piperacillin.chen2016.pkmodel
+
+$ERROR
+Y = F + F*EPS(1)
+IPRED = F
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.311; ETA CL
+0 0.38; ETA V1
+
+
+$SIGMA 0.0932 STANDARD FIX
+
+$INCLUDE general.aposteriori.footer

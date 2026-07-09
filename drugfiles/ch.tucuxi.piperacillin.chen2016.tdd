@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version='0.6' xsi:noNamespaceSchemaLocation='drugfile.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <history>
+        <revisions>
+            <revision>
+                <revisionAction>creation</revisionAction>
+                <revisionAuthorName>Mina Lynn</revisionAuthorName>
+                <institution>CRISP CHUV</institution>
+                <email>lynn.mina@etu.unige.ch</email>
+                <date>2022-03-28</date>
+                <comments/>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2022-04-11</date>
+                <comments/>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Guillaume Jeanneret</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>guillaume.jeanneret@heig-vd.ch</email>
+                <date>2025-08-22</date>
+                <comments>
+                    <comment lang='en'>Harmonized covariate settings.</comment>
+                </comments>
+            </revision>
+        </revisions>
+    </history>
+    <head>
+        <drug>
+            <atcs>
+                <atc>J01CR05</atc>
+            </atcs>
+            <activeSubstances>
+                <activeSubstance>piperacillin</activeSubstance>
+            </activeSubstances>
+            <drugName>
+                <name lang='en'>Piperacillin</name>
+                <name lang='fr'>Pipéracilline</name>
+            </drugName>
+            <drugDescription>
+                <desc lang='en'>Tazobac is a combination of a beta-lactam antibiotic (piperacillin) and a beta-lactamase inhibitor (tazobactam).</desc>
+                <desc lang='fr'>Tazobac est une combinaison d’un antibiotique bêta-lactame (pipéracilline) et d’un inhibiteur de bêta-lactamase (tazobactam).</desc>
+            </drugDescription>
+            <tdmStrategy>
+                <text lang='en'>TDM is recommended as part of antibacterial therapy to reduce the toxicity of these drugs and increase the efficacy and safety of treatment.</text>
+                <text lang='fr'>La TDM est recommandée dans le cadre de la thérapie antibactérienne afin de réduire la toxicité de ces médicaments et d’augmenter l’efficacité et la sécurité du traitement.</text>
+            </tdmStrategy>
+        </drug>
+        <study>
+            <studyName>
+                <name lang='en'>Development and validation of a clinical decision support tool for piperacillin.</name>
+            </studyName>
+            <studyAuthors>Rong Chen, Qing Qian, Meng-ru Sun, Chun-yan Qian, Su-lan Zou, Ming-li Wang, Li-ying Wang.</studyAuthors>
+            <description>
+                <desc lang='en'>The objectives of this study are to validate a population pharmacokinetic model of piperacillin from the literature using NONMEM software, and then to numerically and clinically validate Tucuxi, a clinical decision support tool, in order to be able to use this software in the future in healthcare services.</desc>
+            </description>
+            <references/>
+        </study>
+        <comments/>
+    </head>
+    <drugModel>
+        <drugId>piperacillin</drugId>
+        <drugModelId>ch.tucuxi.piperacillin.chen2016</drugModelId>
+        <domain>
+            <description>
+                <desc lang='en'>Adult patients treated with piperacillin for nosocomial infections, aged 18-90 years, weight 40-127 kg, creatinine clearance 15-300 mL/min.</desc>
+                <desc lang='fr'>Patients adultes traités par pipéracilline pour des infections nosocomiales, âgés de 18 à 90 ans, pesant de 40 à 127 kg, avec une clairance de la créatinine de 15 à 300 mL/min.</desc>
+            </description>
+            <constraints>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population aged from 18 to 90 years.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population agée de 18 à 90 ans.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((age >= 18) && (age <= 90));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population with creatinine clearance between 15 and 300 mL/min.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population ayant une clairance de la créatinine comprise entre 15 et 300 mL/min.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>clcr</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((clcr >= 15) && (clcr <= 300));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population weighing between 40 and 127 kg.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population pesant entre 40 et 127 kg.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>bodyweight</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((bodyweight >= 40) && (bodyweight <= 127));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+            </constraints>
+        </domain>
+        <covariates>
+            <covariate>
+                <covariateId>bodyweight</covariateId>
+                <covariateName>
+                    <name lang='en'>body weight</name>
+                    <name lang='fr'>poids</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s body weight in kg.</desc>
+                    <desc lang='fr'>Poids du patient en kg.</desc>
+                </description>
+                <unit>kg</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>70</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Body weight must be positive.</text>
+                        <text lang='fr'>Le poids doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (bodyweight >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>clcr</covariateId>
+                <covariateName>
+                    <name lang='en'>creatinine clearance</name>
+                    <name lang='fr'>clairance de la créatinine</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s creatinine clearance in mL/min.</desc>
+                    <desc lang='fr'>Clairance de la créatinine du patient en mL/min.</desc>
+                </description>
+                <unit>ml/min</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>68.7</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Creatinine clearance must be positive.</text>
+                        <text lang='fr'>La clairance de la créatinine doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (clcr  > 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>age</covariateId>
+                <covariateName>
+                    <name lang='en'>age</name>
+                    <name lang='fr'>âge</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s age in years.</desc>
+                    <desc lang='fr'>Âge du patient en années.</desc>
+                </description>
+                <unit>y</unit>
+                <covariateType>ageInYears</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>y</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>57</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Age must be positive.</text>
+                        <text lang='fr'>L&apos;âge doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (age >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+        </covariates>
+        <activeMoieties>
+            <activeMoiety>
+                <activeMoietyId>piperacillin</activeMoietyId>
+                <activeMoietyName>
+                    <name lang='fr'>Pipéracilline</name>
+                    <name lang='en'>Piperacillin</name>
+                </activeMoietyName>
+                <unit>mg/l</unit>
+                <analyteIdList>
+                    <analyteId>piperacillin</analyteId>
+                </analyteIdList>
+                <analytesToMoietyFormula>
+                    <hardFormula>direct</hardFormula>
+                    <comments/>
+                </analytesToMoietyFormula>
+                <targets>
+                    <target>
+                        <targetType>residual</targetType>
+                        <targetValues>
+                            <unit>mg/l</unit>
+                            <min>
+                                <standardValue>8</standardValue>
+                            </min>
+                            <max>
+                                <standardValue>30</standardValue>
+                            </max>
+                            <best>
+                                <standardValue>15</standardValue>
+                            </best>
+                            <toxicityAlarm>
+                                <standardValue>30</standardValue>
+                            </toxicityAlarm>
+                            <inefficacyAlarm>
+                                <standardValue>8</standardValue>
+                            </inefficacyAlarm>
+                        </targetValues>
+                        <comments/>
+                    </target>
+                </targets>
+            </activeMoiety>
+        </activeMoieties>
+        <analyteGroups>
+            <analyteGroup>
+                <groupId>piperacillin</groupId>
+                <pkModelId>linear.1comp.macro</pkModelId>
+                <analytes>
+                    <analyte>
+                        <analyteId>piperacillin</analyteId>
+                        <unit>mg/l</unit>
+                        <molarMass>
+                            <value>517.56</value>
+                            <unit>g/mol</unit>
+                        </molarMass>
+                        <description>
+                            <desc lang='en'>piperacillin is the only active compound</desc>
+                        </description>
+                        <errorModel>
+                            <errorModelType>proportional</errorModelType>
+                            <sigmas>
+                                <sigma>
+                                    <standardValue>0.0932</standardValue>
+                                </sigma>
+                            </sigmas>
+                            <comments/>
+                        </errorModel>
+                        <comments/>
+                    </analyte>
+                </analytes>
+                <dispositionParameters>
+                    <parameters>
+                        <parameter>
+                            <parameterId>CL</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>9.14</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>clcr</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            CLCReff=Math.pow(4.6,clcr/68.7);
+                                            TVCL=9.14 + CLCReff;
+                                            return TVCL;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>lognormal</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.311</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>Individual clearance must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>CL</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return CL > 0.0;
+                                            
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>12.2</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            BWeff=Math.pow(9.49,bodyweight/61.1);
+                                                                                                        TVV = 12.2 + BWeff;
+                                                                                                        return TVV;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>lognormal</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.38</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>individual central volume must be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V > 0.0;
+                                            
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                    </parameters>
+                    <correlations />
+                </dispositionParameters>
+            </analyteGroup>
+        </analyteGroups>
+        <formulationAndRoutes>
+            <formulationAndRoute>
+                <formulationAndRouteId>id0</formulationAndRouteId>
+                <formulation>parenteralSolution</formulation>
+                <administrationName>IV</administrationName>
+                <administrationRoute>intravenousDrip</administrationRoute>
+                <absorptionModel>infusion</absorptionModel>
+                <dosages>
+                    <analyteConversions>
+                        <analyteConversion>
+                            <analyteId>piperacillin</analyteId>
+                            <factor>1</factor>
+                        </analyteConversion>
+                    </analyteConversions>
+                    <availableDoses>
+                        <unit>mg</unit>
+                        <default>
+                            <standardValue>4000</standardValue>
+                        </default>
+                        <rangeValues>
+                            <from>
+                                <standardValue>2000</standardValue>
+                            </from>
+                            <to>
+                                <standardValue>4000</standardValue>
+                            </to>
+                            <step>
+                                <standardValue>1000</standardValue>
+                            </step>
+                        </rangeValues>
+                        <fixedValues />
+                    </availableDoses>
+                    <availableIntervals>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>8</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>6</value>
+                            <value>12</value>
+                            <value>24</value>
+                            <value>8</value>
+                            <value>4</value>
+                        </fixedValues>
+                    </availableIntervals>
+                    <availableInfusions>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>0.5</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>0.5</value>
+                            <value>1</value>
+                            <value>2</value>
+                            <value>3</value>
+                            <value>4</value>
+                        </fixedValues>
+                    </availableInfusions>
+                    <comments/>
+                </dosages>
+                <absorptionParameters>
+                </absorptionParameters>
+            </formulationAndRoute>
+        </formulationAndRoutes>
+        <timeConsiderations>
+            <halfLife>
+                <unit>h</unit>
+                <duration>
+                    <standardValue>4</standardValue>
+                </duration>
+                <multiplier>1000</multiplier>
+                <comments/>
+            </halfLife>
+            <outdatedMeasure>
+                <unit>d</unit>
+                <duration>
+                    <standardValue>30</standardValue>
+                </duration>
+                <comments/>
+            </outdatedMeasure>
+        </timeConsiderations>
+        <comments/>
+    </drugModel>
+</model>
