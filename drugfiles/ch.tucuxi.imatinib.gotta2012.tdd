@@ -577,8 +577,8 @@
                 <formulationAndRoutes>
                     <formulationAndRoute>
                         <formulationAndRouteId>id0</formulationAndRouteId>
-                        <formulation>parenteralSolution</formulation>
-                        <administrationName>champ libre</administrationName>
+                        <formulation>oralSolution</formulation>
+                        <administrationName>-</administrationName>
                         <administrationRoute>oral</administrationRoute>
                         <absorptionModel>extra</absorptionModel>
                         <dosages>
