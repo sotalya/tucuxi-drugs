@@ -1,0 +1,200 @@
+<?xml version="1.0" ?>
+
+<query xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:noNamespaceSchemaLocation="xml_query.xsd">
+
+	<queryId>ch.tucuxi.tobramycin.hennig</queryId>
+
+	<clientId>1</clientId>
+
+	<date>2020-07-14T08:23:57</date>
+
+	<!-- Date the xml has been sent -->
+
+	<language>en</language>
+
+	<drugTreatment>
+
+		<!-- All the information regarding the patient -->
+
+		<patient>
+
+			<covariates>
+
+				<covariate>
+
+					<covariateId>birthdate</covariateId>
+
+					<date>2018-10-08T00:00:00</date>
+
+					<value>1995-10-14T00:00:00</value>
+
+					<unit>-</unit>
+
+					<dataType>date</dataType>
+
+					<nature>discrete</nature>
+
+				</covariate>
+
+			</covariates>
+
+		</patient>
+
+		<!-- List of the drugs informations we have concerning the patient -->
+
+		<drugs>
+
+			<!-- All the information regarding the drug -->
+
+			<drug>
+
+				<drugId>tobramycin</drugId>
+
+				<activePrinciple>tobramycin</activePrinciple>
+
+				<brandName>Empty</brandName>
+
+				<atc>Empty</atc>
+
+				<!-- All the information regarding the treatment -->
+
+				<treatment>
+
+					<dosageHistory>
+
+						<dosageTimeRange>
+
+							<start>2018-07-06T08:00:00</start>
+
+							<end>2018-07-17T08:00:00</end>
+
+							<dosage>
+
+								<dosageLoop>
+
+									<lastingDosage>
+
+										<interval>24:00:00</interval>
+
+										<dose>
+
+											<value>560</value>
+
+											<unit>mg</unit>
+
+											<infusionTimeInMinutes>30</infusionTimeInMinutes>
+
+										</dose>
+
+										<formulationAndRoute>
+
+											<formulation>parenteralSolution</formulation>
+
+											<administrationName>foo bar</administrationName>
+
+											<administrationRoute>intravenousDrip</administrationRoute>
+
+											<absorptionModel>infusion</absorptionModel>
+
+										</formulationAndRoute>
+
+									</lastingDosage>
+
+								</dosageLoop>
+
+							</dosage>
+
+						</dosageTimeRange>
+
+					</dosageHistory>
+
+				</treatment>
+
+				<!-- Samples history -->
+
+				<samples>
+					<sample>
+                        <sampleId>123456</sampleId>
+                        <sampleDate>2018-10-06T10:00:00</sampleDate>
+                        <concentrations>
+                            <concentration>
+                                <analyteId>tobramycin</analyteId>
+                                <value>0.7</value>
+                                <unit>mg/l</unit>
+                            </concentration>
+                        </concentrations>
+                    </sample>
+
+				</samples>
+
+			</drug>
+
+		</drugs>
+
+	</drugTreatment>
+
+	<!-- List of the requests we want the server to take care of -->
+
+	<requests>
+
+		<request>
+            <requestId>population_1</requestId>
+            <drugId>tobramycin</drugId>
+            <drugModelId>ch.tucuxi.tobramycin.hennig2013</drugModelId>
+            <predictionTraits>
+            <computingOption>
+            <parametersType>population</parametersType>
+            <compartmentOption>allActiveMoieties</compartmentOption>
+            <retrieveStatistics>true</retrieveStatistics>
+            <retrieveParameters>true</retrieveParameters>
+            <retrieveCovariates>true</retrieveCovariates>
+            </computingOption>
+            <nbPointsPerHour>20</nbPointsPerHour>
+            <dateInterval>
+                <start>2018-07-06T08:00:00</start>
+                <end>2018-07-08T08:00:00</end>
+            </dateInterval>
+            </predictionTraits>
+        </request>
+		<request>
+            <requestId>apriori_1</requestId>
+            <drugId>tobramycin</drugId>
+            <drugModelId>ch.tucuxi.tobramycin.hennig2013</drugModelId>
+            <predictionTraits>
+            <computingOption>
+            <parametersType>apriori</parametersType>
+            <compartmentOption>allActiveMoieties</compartmentOption>
+            <retrieveStatistics>true</retrieveStatistics>
+            <retrieveParameters>true</retrieveParameters>
+            <retrieveCovariates>true</retrieveCovariates>
+            </computingOption>
+            <nbPointsPerHour>20</nbPointsPerHour>
+            <dateInterval>
+                <start>2018-07-06T08:00:00</start>
+                <end>2018-07-08T08:00:00</end>
+            </dateInterval>
+            </predictionTraits>
+        </request>
+		<request>
+            <requestId>aposteriori_2</requestId>
+            <drugId>tobramycin</drugId>
+            <drugModelId>ch.tucuxi.tobramycin.hennig2013</drugModelId>
+            <predictionTraits>
+            <computingOption>
+            <parametersType>aposteriori</parametersType>
+            <compartmentOption>allActiveMoieties</compartmentOption>
+            <retrieveStatistics>true</retrieveStatistics>
+            <retrieveParameters>true</retrieveParameters>
+            <retrieveCovariates>true</retrieveCovariates>
+            </computingOption>
+            <nbPointsPerHour>20</nbPointsPerHour>
+            <dateInterval>
+                <start>2018-07-06T08:00:00</start>
+                <end>2018-07-08T08:00:00</end>
+            </dateInterval>
+            </predictionTraits>
+        </request>
+
+	</requests>
+
+</query>

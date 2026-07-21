@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version='0.6' xsi:noNamespaceSchemaLocation='drugfile.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <history>
+        <revisions>
+            <revision>
+                <revisionAction>creation</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2018-11-07</date>
+                <comments/>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2020-10-09</date>
+                <comments>
+                    <comment lang='en'>Modified theta_AGE for Clearance. It was related to the sex instead of the age.</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2021-02-26</date>
+                <comments>
+                    <comment lang='en'>Corrected two errors (SCR impact and a correlation value).</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Guillaume Jeanneret</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>guillaume.jeanneret@heig-vd.ch</email>
+                <date>2025-08-25</date>
+                <comments>
+                    <comment lang='en'>Added DOI reference. Harmonized covariate settings.</comment>
+                </comments>
+            </revision>
+        </revisions>
+    </history>
+    <head>
+        <drug>
+            <atcs>
+                <atc>S01AA12</atc>
+            </atcs>
+            <activeSubstances>
+                <activeSubstance>tobramycin</activeSubstance>
+            </activeSubstances>
+            <drugName>
+                <name lang='en'>Tobramycin</name>
+                <name lang='fr'>Tobramycine</name>
+            </drugName>
+            <drugDescription>
+                <desc lang='en'>Tobramycin is an aminoglycoside antibiotic derived from Streptomyces tenebrarius that is used to treat various types of bacterial infections, particularly Gram-negative infections.</desc>
+                <desc lang='fr'>La tobramycine est un antibiotique aminoglycoside dérivé de Streptomyces tenebrarius, utilisé pour traiter différents types d’infections bactériennes, en particulier les infections à Gram négatif.</desc>
+            </drugDescription>
+            <tdmStrategy>
+                <text lang='en'>To be determined.</text>
+                <text lang='fr'>À déterminer.</text>
+            </tdmStrategy>
+        </drug>
+        <study>
+            <studyName>
+                <name lang='en'>Population Pharmacokinetics of Tobramycin in Patients With and Without Cystic Fibrosis</name>
+            </studyName>
+            <studyAuthors>Stefanie Hennig, Joseph F. Standing, Christine E. Staatz, Alison H. Thomson</studyAuthors>
+            <description>
+                <desc lang='en'>The objectives of this study were to identify covariates which explain pharmacokinetic variability and to examine whether having the disease CF in itself alters these relationships and drug dose requirements.</desc>
+            </description>
+            <references>
+                <reference type='bibtex'>
+                    <![CDATA[@Article{Hennig2013,
+                                                                                  Title                    = {Population Pharmacokinetics of Tobramycin in Patients With and Without Cystic Fibrosis},
+                                                                                  Author                   = {Hennig, Stefanie and Standing, Joseph F. and Staatz, Christine E. and Thomson, Alison H.},
+                                                                                  Journal                  = {Clinical Pharmacokinetics},
+                                                                                  Year                     = {2013},
+                                                                                  Month                    = {Apr},
+                                                                                  Number                   = {4},
+                                                                                  Pages                    = {289--301},
+                                                                                  Volume                   = {52},
+                                                                                  Abstract                 = {While several studies have examined the pharmacokinetics of tobramycin in patients with cystic fibrosis (CF), there is no consensus on whether they differ in patients with and without CF. The objectives of this study were to identify covariates which explain pharmacokinetic variability and to examine whether having the disease CF in itself alters these relationships and drug dose requirements.},
+                                                                                  Day                      = {01},
+                                                                                  Doi                      = {10.1007/s40262-013-0036-y},
+                                                                                  ISSN                     = {1179-1926},
+                                                                                  Url                      = {https://doi.org/10.1007/s40262-013-0036-y}
+                                                                                }]]>
+                </reference>
+                <reference type='doi'>
+                    <![CDATA[https://doi.org/10.1007/s40262-013-0036-y]]>
+                </reference>
+            </references>
+        </study>
+        <comments/>
+    </head>
+    <drugModel>
+        <drugId>tobramycin</drugId>
+        <drugModelId>ch.tucuxi.tobramycin.hennig2013</drugModelId>
+        <domain>
+            <description>
+                <desc lang='en'>Patients treated with tobramycin for bacterial infections, aged 0.01-85 years, weight 3.3-120 kg, creatinine clearance 23-145 mL/min.</desc>
+                <desc lang='fr'>Patients traités par tobramycine pour des infections bactériennes, âgés de 0,01 à 85 ans, pesant de 3,3 à 120 kg, avec une clairance de la créatinine de 23 à 145 mL/min.</desc>
+            </description>
+            <constraints>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population aged from 0 to 85 years.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population agée de 0 à 85 ans.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((age >= 0.01) && (age <= 85));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population weighing between 3.3 and 120 kg.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population pesant entre 3.3 et 120 kg.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>bodyweight</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((bodyweight >= 3.3) && (bodyweight <= 120));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population with creatinine clearance between 23 and 145 mL/min.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population ayant une clairance de la créatinine comprise entre 23 et 145 mL/min.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>clcr</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((clcr >= 23) && (clcr <= 145));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+            </constraints>
+        </domain>
+        <covariates>
+            <covariate>
+                <covariateId>age</covariateId>
+                <covariateName>
+                    <name lang='en'>age</name>
+                    <name lang='fr'>âge</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s age in years.</desc>
+                    <desc lang='fr'>Âge du patient en années.</desc>
+                </description>
+                <unit>y</unit>
+                <covariateType>ageInYears</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>y</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>18</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Age must be positive.</text>
+                        <text lang='fr'>L&apos;âge doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (age >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>sex</covariateId>
+                <covariateName>
+                    <name lang='en'>sex</name>
+                    <name lang='fr'>sexe</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>It indicates if the patient is a male (=1), a female (=0), or unknown (=0.5). The default value is 0.5.</desc>
+                    <desc lang='fr'>Cela indique si le patient est un homme (=1), une femme (=0), ou inconnu (=0.5). La valeur par défaut est 0.5.</desc>
+                </description>
+                <unit>
+                </unit>
+                <covariateType>sex</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>direct</interpolationType>
+                <covariateValue>
+                    <standardValue>0.5</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Sex must be 0, 0.5, or 1.</text>
+                        <text lang='fr'>Le sexe doit être 0, 0.5 ou 1.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>sex</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((sex == 0) || (sex == 0.5) || (sex == 1));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>creatinine</covariateId>
+                <covariateName>
+                    <name lang='en'>serum creatinine concentration</name>
+                    <name lang='fr'>concentration de sérum créatinine</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s serum creatinine concentration in umol/L.</desc>
+                    <desc lang='fr'>Concentration de sérum créatinine du patient en umol/L.</desc>
+                </description>
+                <unit>umol/l</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>37.2</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Serum creatinine concentration must be positive.</text>
+                        <text lang='fr'>La concentration de sérum créatinine doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>creatinine</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (creatinine >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>bodyweight</covariateId>
+                <covariateName>
+                    <name lang='en'>body weight</name>
+                    <name lang='fr'>taille</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s body weight in kg.</desc>
+                    <desc lang='fr'>Poids du patient en kg.</desc>
+                </description>
+                <unit>kg</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>58</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Body weight must be positive.</text>
+                        <text lang='fr'>Le poids doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (bodyweight > 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>height</covariateId>
+                <covariateName>
+                    <name lang='en'>height</name>
+                    <name lang='fr'>taille</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s height in cm.</desc>
+                    <desc lang='fr'>Taille du patient en cm.</desc>
+                </description>
+                <unit>cm</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>y</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>167</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Height must be positive.</text>
+                        <text lang='fr'>La taille doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>height</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (height >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>clcr</covariateId>
+                <covariateName>
+                    <name lang='en'>creatinine clearance</name>
+                    <name lang='fr'>clairance de la créatinine</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s creatinine clearance in mL/min.</desc>
+                    <desc lang='fr'>Clairance de la créatinine du patient en mL/min.</desc>
+                </description>
+                <unit>ml/min</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>80</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Creatinine clearance must be positive.</text>
+                        <text lang='fr'>La clairance de la créatinine doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (clcr > 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+        </covariates>
+        <activeMoieties>
+            <activeMoiety>
+                <activeMoietyId>tobramycin</activeMoietyId>
+                <activeMoietyName>
+                    <name lang='en'>Tobramycin</name>
+                </activeMoietyName>
+                <unit>mg/l</unit>
+                <analyteIdList>
+                    <analyteId>tobramycin</analyteId>
+                </analyteIdList>
+                <analytesToMoietyFormula>
+                    <hardFormula>direct</hardFormula>
+                    <comments/>
+                </analytesToMoietyFormula>
+                <targets>
+                    <target>
+                        <targetType>auc24</targetType>
+                        <targetValues>
+                            <unit>mg*h/l</unit>
+                            <min>
+                                <standardValue>70</standardValue>
+                            </min>
+                            <max>
+                                <standardValue>110</standardValue>
+                            </max>
+                            <best>
+                                <standardValue>100</standardValue>
+                            </best>
+                            <toxicityAlarm>
+                                <standardValue>120</standardValue>
+                            </toxicityAlarm>
+                            <inefficacyAlarm>
+                                <standardValue>60</standardValue>
+                            </inefficacyAlarm>
+                        </targetValues>
+                        <comments>
+                            <comment lang='en'>Targets suggested by Philip Drennan</comment>
+                        </comments>
+                    </target>
+                </targets>
+            </activeMoiety>
+        </activeMoieties>
+        <analyteGroups>
+            <analyteGroup>
+                <groupId>tobramycin</groupId>
+                <pkModelId>linear.2comp.macro</pkModelId>
+                <analytes>
+                    <analyte>
+                        <analyteId>tobramycin</analyteId>
+                        <unit>mg/l</unit>
+                        <molarMass>
+                            <value>467.515</value>
+                            <unit>g/mol</unit>
+                        </molarMass>
+                        <description>
+                            <desc lang='en'>Please write a description of Tobramycin.</desc>
+                        </description>
+                        <errorModel>
+                            <errorModelType>proportional</errorModelType>
+                            <sigmas>
+                                <sigma>
+                                    <standardValue>0.204</standardValue>
+                                </sigma>
+                            </sigmas>
+                            <comments/>
+                        </errorModel>
+                        <comments/>
+                    </analyte>
+                </analytes>
+                <dispositionParameters>
+                    <parameters>
+                        <parameter>
+                            <parameterId>CL</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>8.75</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>age</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>sex</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>creatinine</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>height</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            theta_CL = 0.0;
+                                            theta_AGE = 0.0;
+                                            ffm = 0.0;
+                                            bmi = bodyweight / ((height / 100) * (height / 100));
+                                            if (sex >  0.5) {
+                                                theta_CL = 9.4;
+                                                ffm = 9270 * bodyweight / (6680 + 216 * bmi);
+                                            }
+                                            else {
+                                                theta_CL = 8.1;
+                                                ffm = 9270 * bodyweight / (8780 + 244 * bmi);
+                                            }
+                                            if (age < 18.0) {
+                                                theta_AGE = -0.021;
+                                            }
+                                            else {
+                                                theta_AGE = -0.010;
+                                            }
+                                            theta_FFM = 0.952;
+                                            theta_SCR = 0.222;
+                                            
+                                            F_AGE = 1 + theta_AGE * (age - 18.0);
+                                            F_SCR = Math.pow(37.2 / creatinine, theta_SCR);
+                                            F_FFMCLQ2 = Math.pow(ffm / 70.0, theta_FFM);
+                                            
+                                            newCL = theta_CL * F_FFMCLQ2 * F_AGE * F_SCR;
+                                            return newCL;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>exponential</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.259</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>The clearance shall be positive.</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>CL</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return CL > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V1</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>22.6</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>height</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>sex</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            theta_V1 = 0.0;
+                                            
+                                            ffm = 0.0;
+                                            bmi = bodyweight / ((height / 100) * (height / 100));
+                                            if (sex > 0.5) {
+                                                theta_V1 = 25.1;
+                                                ffm = 9270 * bodyweight / (6680 + 216 * bmi);
+                                            }
+                                            else {
+                                                theta_V1 = 20.1;
+                                                ffm = 9270 * bodyweight / (8780 + 244 * bmi);
+                                            }
+                                            
+                                            F_FFMV1V2 = ffm / 70.0;
+                                            
+                                            newV1 = theta_V1 * F_FFMV1V2;
+                                            return newV1;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>exponential</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.152</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>The volume V1 shall be positive.</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V1</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V1 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>Q</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>1.5</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>sex</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>height</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            theta_Q = 1.5;
+                                            ffm = 0.0;
+                                            bmi = bodyweight / ((height / 100) * (height / 100));
+                                            if (sex > 0.5) {
+                                                ffm = 9270 * bodyweight / (6680 + 216 * bmi);
+                                            }
+                                            else {
+                                                ffm = 9270 * bodyweight / (8780 + 244 * bmi);
+                                            }
+                                            theta_FFM = 0.952;
+                                            
+                                            F_FFMCLQ2 = Math.pow(ffm / 70.0, theta_FFM);
+                                            
+                                            newQ = theta_Q * F_FFMCLQ2;
+                                            
+                                            return newQ;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>exponential</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.418</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>Q shall be positive.</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>Q</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return Q > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V2</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>10</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>sex</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>height</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            theta_V2 = 10.0;
+                                            ffm = 0.0;
+                                            bmi = bodyweight / ((height / 100) * (height / 100));
+                                            if (sex > 0.5) {
+                                                ffm = 9270 * bodyweight / (6680 + 216 * bmi);
+                                            }
+                                            else {
+                                                ffm = 9270 * bodyweight / (8780 + 244 * bmi);
+                                            }
+                                            
+                                            F_FFMV1V2 = ffm / 70.0;
+                                            
+                                            newV2 = theta_V2 * F_FFMV1V2;
+                                            return newV2;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>exponential</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.585</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='fr'>V2 shall be positive.</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V2</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V2 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                    </parameters>
+                    <correlations>
+                        <correlation>
+                            <param1>CL</param1>
+                            <param2>V1</param2>
+                            <value>0.658</value>
+                            <comments/>
+                        </correlation>
+                        <correlation>
+                            <param1>CL</param1>
+                            <param2>Q</param2>
+                            <value>0.711</value>
+                            <comments/>
+                        </correlation>
+                        <correlation>
+                            <param1>V1</param1>
+                            <param2>Q</param2>
+                            <value>0.475</value>
+                            <comments/>
+                        </correlation>
+                    </correlations>
+                </dispositionParameters>
+            </analyteGroup>
+        </analyteGroups>
+        <formulationAndRoutes>
+            <formulationAndRoute>
+                <formulationAndRouteId>id0</formulationAndRouteId>
+                <formulation>parenteralSolution</formulation>
+                <administrationName>To be defined</administrationName>
+                <administrationRoute>intravenousDrip</administrationRoute>
+                <absorptionModel>infusion</absorptionModel>
+                <dosages>
+                    <analyteConversions>
+                        <analyteConversion>
+                            <analyteId>tobramycin</analyteId>
+                            <factor>1</factor>
+                        </analyteConversion>
+                    </analyteConversions>
+                    <availableDoses>
+                        <unit>mg</unit>
+                        <default>
+                            <standardValue>400</standardValue>
+                        </default>
+                        <rangeValues>
+                            <from>
+                                <standardValue>40</standardValue>
+                            </from>
+                            <to>
+                                <standardValue>1000</standardValue>
+                            </to>
+                            <step>
+                                <standardValue>40</standardValue>
+                            </step>
+                        </rangeValues>
+                        <fixedValues />
+                    </availableDoses>
+                    <availableIntervals>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>24</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>24</value>
+                        </fixedValues>
+                    </availableIntervals>
+                    <availableInfusions>
+                        <unit>min</unit>
+                        <default>
+                            <standardValue>30</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>30</value>
+                        </fixedValues>
+                    </availableInfusions>
+                    <comments/>
+                </dosages>
+                <absorptionParameters>
+                </absorptionParameters>
+            </formulationAndRoute>
+        </formulationAndRoutes>
+        <timeConsiderations>
+            <halfLife>
+                <unit>h</unit>
+                <duration>
+                    <standardValue>10</standardValue>
+                </duration>
+                <multiplier>200</multiplier>
+                <comments>
+                    <comment lang='en'>To be defined</comment>
+                </comments>
+            </halfLife>
+            <outdatedMeasure>
+                <unit>d</unit>
+                <duration>
+                    <standardValue>100</standardValue>
+                </duration>
+                <comments>
+                    <comment lang='en'>To be defined</comment>
+                </comments>
+            </outdatedMeasure>
+        </timeConsiderations>
+        <comments/>
+    </drugModel>
+</model>

@@ -1,0 +1,47 @@
+; Tobramycin model for patients with and without cystic fibrosis, from Hennig 2013.
+; Written by Yann Thoma
+; Final version : 26.02.2021
+;
+; This file contains the PK model, and is meant to be included by other
+; files for specific calculations
+
+; 2-compartments model with infusion
+$SUB ADVAN3 TRANS4
+
+$PK
+
+BMI = bodyweight / ((height / 100) * (height / 100));
+
+isMale = sex - 0.5
+IF (isMale.GT.0) FFM = 9270 * bodyweight / (6680 + 216 * BMI);
+IF (isMale.LE.0) FFM = 9270 * bodyweight / (8780 + 244 * BMI);
+
+IF (isMale.GT.0) theta_CL = 9.4;
+IF (isMale.LE.0) theta_CL = 8.1;
+
+IF (isMale.GT.0) theta_V1 = 25.1;
+IF (isMale.LE.0) theta_V1 = 20.1;
+
+theta_AGE = -0.021;
+IF (age.GT.18) theta_AGE = -0.010;
+
+theta_FFM = 0.952;
+theta_SCR = 0.222;
+F_AGE = 1 + theta_AGE * (age - 18);
+F_SCR = (37.2/scr) ** (theta_SCR);
+F_FFMCLQ2 = (FFM/70) ** theta_FFM;
+
+TVCL = theta_CL * F_FFMCLQ2 * F_AGE * F_SCR;
+CL = TVCL * EXP(ETA(1))
+
+F_FFMV1V2 = FFM / 70;
+TVV1 = theta_V1 * F_FFMV1V2;
+V1 = TVV1 * EXP(ETA(2))
+
+TVV2 = 10 * FFM / 70;
+V2 = TVV2 * EXP(ETA(4))
+
+TVQ = 1.5 * F_FFMCLQ2;
+Q = TVQ * EXP(ETA(3))
+
+S1 = V1 / 1000
