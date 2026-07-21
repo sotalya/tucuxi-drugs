@@ -20,42 +20,10 @@
                       <dataType>double</dataType>
                     <nature>discrete</nature>
                 </covariate>
-                <covariate>
-                    <covariateId>bodyweight</covariateId>
-                    <date>2019-12-04T08:00:00</date>
-                    <value>42.95</value>
-                    <unit>kg</unit>
-                      <dataType>double</dataType>
-                    <nature>discrete</nature>
-                </covariate>
-		<covariate>
-                    <covariateId>bodyweight</covariateId>
-                    <date>2019-12-06T00:00:00</date>
-                    <value>44.10</value>
-                    <unit>kg</unit>
-                      <dataType>double</dataType>
-                    <nature>discrete</nature>
-                </covariate>
 		<covariate>
                     <covariateId>CLCR</covariateId>
                     <date>2019-12-03T06:00:00</date>
                     <value>62.41</value>
-                    <unit>ml/min</unit>
-                      <dataType>double</dataType>
-                    <nature>discrete</nature>
-                </covariate>
-                <covariate>
-                    <covariateId>CLCR</covariateId>
-                    <date>2019-12-04T08:00:00</date>
-                    <value>64.90</value>
-                    <unit>ml/min</unit>
-                      <dataType>double</dataType>
-                    <nature>discrete</nature>
-                </covariate>
-		<covariate>
-                    <covariateId>CLCR</covariateId>
-                    <date>2019-12-06T00:00:00</date>
-                    <value>95.19</value>
                     <unit>ml/min</unit>
                       <dataType>double</dataType>
                     <nature>discrete</nature>
@@ -217,7 +185,7 @@
               <nbPointsPerHour>20</nbPointsPerHour>
               <dateInterval>
                   <start>2019-12-01T16:00:00</start>
-                  <end>2019-12-06T00:00:00</end>
+                  <end>2019-12-06T06:00:00</end>
               </dateInterval>
             </predictionTraits>
         </request>
@@ -236,7 +204,7 @@
               <nbPointsPerHour>20</nbPointsPerHour>
               <dateInterval>
                   <start>2019-12-01T16:00:00</start>
-                  <end>2019-12-06T00:00:00</end>
+                  <end>2019-12-06T06:00:00</end>
               </dateInterval>
             </predictionTraits>
         </request>
