@@ -1,0 +1,35 @@
+$INCLUDE general.header
+
+$PROBLEM IMATINIB Model Predictions Study PK-PD GIST. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV age bodyweight CLcr temperature sex RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.daptomycin.dvorchik2004.pkmodel
+
+
+$ERROR
+W = 4730
+Y = F + W * ETA(5)
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+
+
+$OMEGA STANDARD CORRELATION BLOCK(4) FIX
+0.306
+0 0.567
+0 0 0.652
+0 0 0 0.191
+
+;$OMEGA 0.306 STANDARD FIX
+;$OMEGA 0.567 STANDARD FIX
+;$OMEGA 0.652 STANDARD FIX
+;$OMEGA 0.191 STANDARD FIX
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+$INCLUDE general.apriori.perc.footer

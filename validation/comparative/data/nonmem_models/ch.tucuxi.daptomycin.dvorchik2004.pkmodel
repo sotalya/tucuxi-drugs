@@ -1,0 +1,29 @@
+
+$SUB ADVAN3 TRANS4
+
+$PK
+
+TVCL = (THETA(1) * (CLcr - 91.2) + THETA(2) + THETA(3) * (temperature - 37.2)) * (THETA(4) + 0.2 * sex)
+CL = TVCL * (1 + ETA(1))
+
+TVV1 = THETA(9)
+V1 = TVV1 * (1 + ETA(2))
+
+TVQ = THETA(5) + THETA(6) * (bodyweight - 75.1)
+Q = TVQ * (1 + ETA(3))
+
+TVV2 = THETA(7) + THETA(8) * (bodyweight - 75.1)
+V2 = TVV2 * (1 + ETA(4))
+
+S1 = V1 / 1000
+
+
+$THETA (0.00514) FIX; 1 CLcr on CL
+$THETA (0.807) FIX; 2 CL
+$THETA (0.14) FIX; 3 temperature on CL
+$THETA (0.8) FIX ; 4 sex on female
+$THETA (3.46) FIX ; 5 Q
+$THETA (0.0593) FIX ; 6 bodyweight on Q
+$THETA (6.04) FIX ; 7 V2
+$THETA (0.0884) FIX ; 8 bodyweidht on V2
+$THETA (4.8) FIX ; 9 V1

@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version='0.6' xsi:noNamespaceSchemaLocation='drugfile.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <history>
+        <revisions>
+            <revision>
+                <revisionAction>creation</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD // REDS</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2018-10-25</date>
+                <comments>
+                    <comment lang='en'>First version of daptomycin model</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2021-01-04</date>
+                <comments>
+                    <comment lang='en'>Added the age covariate, for domain checking</comment>
+                </comments>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Guillaume Jeanneret</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>guillaume.jeanneret@heig-vd.ch</email>
+                <date>2025-08-20</date>
+                <comments>
+                    <comment lang='en'>Added DOI reference. Harmonized covariate settings.</comment>
+                </comments>
+            </revision>
+        </revisions>
+    </history>
+    <head>
+        <drug>
+            <atcs>
+                <atc>J01XX09</atc>
+            </atcs>
+            <activeSubstances>
+                <activeSubstance>daptomycin</activeSubstance>
+            </activeSubstances>
+            <drugName>
+                <name lang='en'>Daptomycin</name>
+                <name lang='fr'>Daptomycine</name>
+            </drugName>
+            <drugDescription>
+                <desc lang='en'>Daptomycin is a lipopeptide antibiotic used in the treatment of systemic and life-threatening infections caused by Gram-positive organisms.</desc>
+                <desc lang='fr'>La daptomycine est un antibiotique lipopeptidique utilisé dans le traitement des infections systémiques et potentiellement mortelles causées par des organismes Gram positifs.</desc>
+            </drugDescription>
+            <tdmStrategy>
+                <text lang='en'>To be determined.</text>
+                <text lang='fr'>À déterminer.</text>
+            </tdmStrategy>
+        </drug>
+        <study>
+            <studyName>
+                <name lang='en'>Population Pharmacokinetics of Daptomycin</name>
+            </studyName>
+            <studyAuthors>Barry Dvorchik, Robert D. Arbeit, Julia Chung, Susan Liu, William Knebel, Helen Kastrissios</studyAuthors>
+            <description>
+                <desc lang='en'>Data from subjects in nine phase 1 (n = 153) and six phase 2/3 (n = 129) clinical trials were combined to identify factors contributing to interindividual variability in daptomycin pharmacokinetics (PK). Over 30 covariates were considered. A two-compartment model with first-order elimination provided the best fit for data on daptomycin concentrations in plasma over time. In the final population PK model, daptomycin plasma clearance (CL) was a function of renal function, body temperature, and sex. Of these factors, renal function contributed most significantly to interindividual variability. CL varied linearly with the estimated creatinine clearance. CL among dialysis subjects was approximately one-third that of healthy subjects (0.27 versus 0.81 liter/h). CL in females was 80% that in males; however, in clinical trials, the outcome was not affected by sex and therefore this effect is not considered clinically meaningful. The relationship with body temperature should be interpreted cautiously since the analysis included only a limited number of subjects who were hyperthermic. The volume of distribution of the peripheral compartment (V2) and intercompartmental clearance (Q) were linearly related to body weight. V2 increased approximately twofold in the presence of an acute infection. No factors were identified that significantly impacted V1. This analysis supports the dosing of daptomycin on a milligram-per-kilogram-of-body-weight basis and suggests that modified dosing regimens are indicated for patients with severe renal disease and for those undergoing dialysis.</desc>
+            </description>
+            <references>
+                <reference type='bibtex'>
+                    <![CDATA[@article{RIS_0,
+                                                            	abstract = {Data from subjects in nine phase 1 (n = 153) and six phase 2/3 (n = 129) clinical trials were combined to identify factors contributing to interindividual variability in daptomycin pharmacokinetics (PK). Over 30 covariates were considered. A two-compartment model with first-order elimination provided the best fit for data on daptomycin concentrations in plasma over time. In the final population PK model, daptomycin plasma clearance (CL) was a function of renal function, body temperature, and sex. Of these factors, renal function contributed most significantly to interindividual variability. CL varied linearly with the estimated creatinine clearance. CL among dialysis subjects was approximately one-third that of healthy subjects (0.27 versus 0.81 liter/h). CL in females was 80\% that in males; however, in clinical trials, the outcome was not affected by sex and therefore this effect is not considered clinically meaningful. The relationship with body temperature should be interpreted cautiously since the analysis included only a limited number of subjects who were hyperthermic. The volume of distribution of the peripheral compartment (V2) and intercompartmental clearance (Q) were linearly related to body weight. V2 increased approximately twofold in the presence of an acute infection. No factors were identified that significantly impacted V1. This analysis supports the dosing of daptomycin on a milligram-per-kilogram-of-body-weight basis and suggests that modified dosing regimens are indicated for patients with severe renal disease and for those undergoing dialysis.},
+                                                            	author = {{Dvorchik Barry} and {Arbeit Robert D} and {Chung Julia} and {Liu Susan} and {Knebel William} and {Kastrissios Helen}},
+                                                            	issn = {0066-4804 1098-6596},
+                                                            	journal = {Antimicrobial agents and chemotherapy},
+                                                            	month = {aug},
+                                                            	number = {8},
+                                                            	pages = {2799–2807},
+                                                            	publisher = {American Society for Microbiology},
+                                                            	risfield_0_db = {PubMed},
+                                                            	risfield_1_an = {15273084},
+                                                            	risfield_2_do = {10.1128/AAC.48.8.2799-2807.2004},
+                                                            	risfield_3_u1 = {15273084[pmid]},
+                                                            	risfield_4_u2 = {PMC478529[pmcid]},
+                                                            	risfield_5_u4 = {48/8/2799[PII]},
+                                                            	title = {{Population pharmacokinetics of daptomycin}},
+                                                            	url = {https://www.ncbi.nlm.nih.gov/pubmed/15273084 https://www.ncbi.nlm.nih.gov/pmc/PMC478529/},
+                                                            	volume = {48},
+                                                            	year = {2004}
+                                                            }
+                                                            ]]>
+                </reference>
+                <reference type='doi'>
+                    <![CDATA[https://doi.org/10.1128/aac.48.8.2799-2807.2004]]>
+                </reference>
+            </references>
+        </study>
+        <comments/>
+    </head>
+    <drugModel>
+        <drugId>daptomycin</drugId>
+        <drugModelId>ch.tucuxi.daptomycin.dvorchik2004</drugModelId>
+        <domain>
+            <description>
+                <desc lang='en'>Adult patients, both healthy volunteers and patients with gram-positive infections, aged 18-93 years, weight 48-153 kg.</desc>
+                <desc lang='fr'>Patients adultes, à la fois volontaires sains et patients présentant des infections à Gram positif, âgés de 18 à 93 ans, pesant de 48 à 153 kg.</desc>
+            </description>
+            <constraints>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population aged from 18 to 93 years.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population agée de 18 à 93 ans.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((age >= 18) && (age <= 93));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population weighing between 48 and 153 kg.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population pesant entre 48 et 153 kg.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>bodyweight</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((bodyweight <= 153) && (bodyweight >= 48));
+                                    ]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </checkOperation>
+                        <comments/>
+                    </constraint>
+                </constraints>
+            </domain>
+            <covariates>
+                <covariate>
+                    <covariateId>age</covariateId>
+                    <covariateName>
+                        <name lang='en'>age</name>
+                        <name lang='fr'>âge</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Patient&apos;s age in years.</desc>
+                        <desc lang='fr'>Âge du patient en années.</desc>
+                    </description>
+                    <unit>y</unit>
+                    <covariateType>ageInYears</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>linear</interpolationType>
+                    <refreshPeriod>
+                        <unit>y</unit>
+                        <value>1</value>
+                    </refreshPeriod>
+                    <covariateValue>
+                        <standardValue>51</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>Age must be positive.</text>
+                            <text lang='fr'>L&apos;âge doit être positif.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>age</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[
+                                    return (age >= 0);
+                                    ]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments/>
+                </covariate>
+                <covariate>
+                    <covariateId>bodyweight</covariateId>
+                    <covariateName>
+                        <name lang='en'>body weight</name>
+                        <name lang='fr'>poids</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Patient&apos;s body weight in kg.</desc>
+                        <desc lang='fr'>Poids du patient en kg.</desc>
+                    </description>
+                    <unit>kg</unit>
+                    <covariateType>standard</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>linear</interpolationType>
+                    <refreshPeriod>
+                        <unit>d</unit>
+                        <value>1</value>
+                    </refreshPeriod>
+                    <covariateValue>
+                        <standardValue>75.1</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>Body weight must be positive.</text>
+                            <text lang='fr'>Le poids doit être positif.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>bodyweight</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[
+                                    return (bodyweight >= 0);
+                                    ]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments/>
+                </covariate>
+                <covariate>
+                    <covariateId>clcr</covariateId>
+                    <covariateName>
+                        <name lang='en'>creatinine clearance</name>
+                        <name lang='fr'>clairance de la créatinine</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Patient&apos;s creatinine clearance in mL/min.</desc>
+                        <desc lang='fr'>Clairance de la créatinine du patient en mL/min.</desc>
+                    </description>
+                    <unit>ml/min</unit>
+                    <covariateType>standard</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>linear</interpolationType>
+                    <refreshPeriod>
+                        <unit>d</unit>
+                        <value>1</value>
+                    </refreshPeriod>
+                    <covariateValue>
+                        <standardValue>91.2</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>Creatinine clearance must be positive.</text>
+                            <text lang='fr'>La clairance de la créatinine doit être positive.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>clcr</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[
+                                    return (clcr  > 0);
+                                    ]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments/>
+                </covariate>
+                <covariate>
+                    <covariateId>temperature</covariateId>
+                    <covariateName>
+                        <name lang='en'>body temperature</name>
+                        <name lang='fr'>température corporelle</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Patient&apos;s body temperature in celsius degrees.</desc>
+                        <desc lang='fr'>Température corporelle du patient en degrés celsius.</desc>
+                    </description>
+                    <unit>celsius</unit>
+                    <covariateType>standard</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>direct</interpolationType>
+                    <covariateValue>
+                        <standardValue>37.2</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>Body temperature must be higher than 20°C.</text>
+                            <text lang='fr'>La température corporelle doit être plus grande que 20°C.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>temperature</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[
+                                    return (temperature > 20);
+                                    ]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments/>
+                </covariate>
+                <covariate>
+                    <covariateId>sex</covariateId>
+                    <covariateName>
+                        <name lang='en'>sex</name>
+                        <name lang='fr'>sexe</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>It indicates if the patient is a male (=0), a female (=1), or unknown (=0.5). The default value is 0.5.</desc>
+                        <desc lang='fr'>Cela indique si le patien est un homme (=0), une femme (=1), ou inconnu (=0.5). La valeur par défaut est 0.5.</desc>
+                    </description>
+                    <unit>
+                    </unit>
+                    <covariateType>sex</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>direct</interpolationType>
+                    <covariateValue>
+                        <standardValue>0.5</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>Sex must be 0, 0.5, or 1.</text>
+                            <text lang='fr'>Le sexe doit être 0, 0.5 ou 1.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>sex</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[
+                                    return ((sex == 0) || (sex == 0.5) || (sex == 1));
+                                    ]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments/>
+                </covariate>
+            </covariates>
+            <activeMoieties>
+                <activeMoiety>
+                    <activeMoietyId>daptomycin</activeMoietyId>
+                    <activeMoietyName>
+                        <name lang='en'>Daptomycin</name>
+                    </activeMoietyName>
+                    <unit>mg/l</unit>
+                    <analyteIdList>
+                        <analyteId>daptomycin</analyteId>
+                    </analyteIdList>
+                    <analytesToMoietyFormula>
+                        <hardFormula>direct</hardFormula>
+                        <comments/>
+                    </analytesToMoietyFormula>
+                    <targets>
+                        <target>
+                            <targetType>auc24DividedByMic</targetType>
+                            <targetValues>
+                                <unit>h</unit>
+                                <min>
+                                    <standardValue>400</standardValue>
+                                </min>
+                                <max>
+                                    <standardValue>1200</standardValue>
+                                </max>
+                                <best>
+                                    <standardValue>666</standardValue>
+                                </best>
+                                <toxicityAlarm>
+                                    <standardValue>1200</standardValue>
+                                </toxicityAlarm>
+                                <inefficacyAlarm>
+                                    <standardValue>400</standardValue>
+                                </inefficacyAlarm>
+                                <mic>
+                                    <unit>mg/l</unit>
+                                    <micValue>
+                                        <standardValue>1</standardValue>
+                                    </micValue>
+                                </mic>
+                            </targetValues>
+                            <comments>
+                                <comment lang='en'>Targets suggested by Sylvain Goutelle</comment>
+                            </comments>
+                        </target>
+                    </targets>
+                </activeMoiety>
+            </activeMoieties>
+            <analyteGroups>
+                <analyteGroup>
+                    <groupId>daptomycin</groupId>
+                    <pkModelId>linear.2comp.macro</pkModelId>
+                    <analytes>
+                        <analyte>
+                            <analyteId>daptomycin</analyteId>
+                            <unit>mg/l</unit>
+                            <molarMass>
+                                <value>1619.7</value>
+                                <unit>g/mol</unit>
+                            </molarMass>
+                            <description/>
+                            <errorModel>
+                                <errorModelType>additive</errorModelType>
+                                <sigmas>
+                                    <sigma>
+                                        <standardValue>4.73</standardValue>
+                                    </sigma>
+                                </sigmas>
+                                <comments>
+                                    <comment lang='en'>The publication report a sigma-squared of 22.4, so sigma = sqrt(22.4) = 4.73 mg/L</comment>
+                                </comments>
+                            </errorModel>
+                            <comments/>
+                        </analyte>
+                    </analytes>
+                    <dispositionParameters>
+                        <parameters>
+                            <parameter>
+                                <parameterId>CL</parameterId>
+                                <unit>l/h</unit>
+                                <parameterValue>
+                                    <standardValue>0.807</standardValue>
+                                    <aprioriComputation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>clcr</id>
+                                                    <type>double</type>
+                                                </input>
+                                                <input>
+                                                    <id>sex</id>
+                                                    <type>double</type>
+                                                </input>
+                                                <input>
+                                                    <id>temperature</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                theta_1 = 0.00514;
+                                                theta_2 = 0.807;
+                                                theta_3 = 0.14;
+                                                
+                                                theta_4 = 0.8 + 0.2 * sex;
+                                                
+                                                TVCL = (theta_1 * (clcr - 91.2) + theta_2 + theta_3 * (temperature - 37.2)) * theta_4;
+                                                return TVCL;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </aprioriComputation>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>proportional</bsvType>
+                                    <stdDevs>
+                                        <stdDev>0.306</stdDev>
+                                    </stdDevs>
+                                </bsv>
+                                <comments/>
+                            </parameter>
+                            <parameter>
+                                <parameterId>V1</parameterId>
+                                <unit>l</unit>
+                                <parameterValue>
+                                    <standardValue>4.8</standardValue>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>proportional</bsvType>
+                                    <stdDevs>
+                                        <stdDev>0.567</stdDev>
+                                    </stdDevs>
+                                </bsv>
+                                <comments/>
+                            </parameter>
+                            <parameter>
+                                <parameterId>Q</parameterId>
+                                <unit>l/h</unit>
+                                <parameterValue>
+                                    <standardValue>3.46</standardValue>
+                                    <aprioriComputation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>bodyweight</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                theta_5 = 3.46;
+                                                theta_6 = 0.0593;
+                                                
+                                                TVQ = (theta_5 + theta_6 * (bodyweight - 75.1));
+                                                return TVQ;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </aprioriComputation>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>proportional</bsvType>
+                                    <stdDevs>
+                                        <stdDev>0.652</stdDev>
+                                    </stdDevs>
+                                </bsv>
+                                <comments/>
+                            </parameter>
+                            <parameter>
+                                <parameterId>V2</parameterId>
+                                <unit>l</unit>
+                                <parameterValue>
+                                    <standardValue>6.04</standardValue>
+                                    <aprioriComputation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>bodyweight</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                theta_7 = 6.04;
+                                                theta_8 = 0.0884;
+                                                
+                                                TVV2 = (theta_7 + theta_8 * (bodyweight - 75.1));
+                                                return TVV2;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </aprioriComputation>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>proportional</bsvType>
+                                    <stdDevs>
+                                        <stdDev>0.191</stdDev>
+                                    </stdDevs>
+                                </bsv>
+                                <comments>
+                                    <comment lang='en'>Original Theta_7 = 3.13 and theta_8 = 0.0458, are for non-infected subjects. In infected patients, those values are to be multiplied by 1.93, which lead to 6.04 and 0.0884.</comment>
+                                </comments>
+                            </parameter>
+                        </parameters>
+                        <correlations />
+                    </dispositionParameters>
+                </analyteGroup>
+            </analyteGroups>
+            <formulationAndRoutes>
+                <formulationAndRoute>
+                    <formulationAndRouteId>id0</formulationAndRouteId>
+                    <formulation>parenteralSolution</formulation>
+                    <administrationName>champ libre</administrationName>
+                    <administrationRoute>intravenousDrip</administrationRoute>
+                    <absorptionModel>infusion</absorptionModel>
+                    <dosages>
+                        <analyteConversions>
+                            <analyteConversion>
+                                <analyteId>daptomycin</analyteId>
+                                <factor>1</factor>
+                            </analyteConversion>
+                        </analyteConversions>
+                        <availableDoses>
+                            <unit>mg</unit>
+                            <default>
+                                <standardValue>500</standardValue>
+                            </default>
+                            <rangeValues>
+                                <from>
+                                    <standardValue>50</standardValue>
+                                </from>
+                                <to>
+                                    <standardValue>2000</standardValue>
+                                </to>
+                                <step>
+                                    <standardValue>50</standardValue>
+                                </step>
+                            </rangeValues>
+                            <fixedValues />
+                        </availableDoses>
+                        <availableIntervals>
+                            <unit>h</unit>
+                            <default>
+                                <standardValue>24</standardValue>
+                            </default>
+                            <fixedValues>
+                                <value>24</value>
+                                <value>36</value>
+                                <value>48</value>
+                            </fixedValues>
+                        </availableIntervals>
+                        <availableInfusions>
+                            <unit>min</unit>
+                            <default>
+                                <standardValue>30</standardValue>
+                            </default>
+                            <fixedValues>
+                                <value>2</value>
+                                <value>30</value>
+                                <value>60</value>
+                            </fixedValues>
+                        </availableInfusions>
+                        <comments>
+                            <comment lang='en'>Set from drug label</comment>
+                            <comment lang='fr'>Durées de perfusion issues du RCP</comment>
+                        </comments>
+                    </dosages>
+                    <absorptionParameters>
+                    </absorptionParameters>
+                </formulationAndRoute>
+            </formulationAndRoutes>
+            <timeConsiderations>
+                <halfLife>
+                    <unit>h</unit>
+                    <duration>
+                        <standardValue>10</standardValue>
+                    </duration>
+                    <multiplier>10</multiplier>
+                    <comments/>
+                </halfLife>
+                <outdatedMeasure>
+                    <unit>d</unit>
+                    <duration>
+                        <standardValue>100</standardValue>
+                    </duration>
+                    <comments>
+                        <comment lang='en'>TODO : This value is not set now</comment>
+                    </comments>
+                </outdatedMeasure>
+            </timeConsiderations>
+            <comments/>
+        </drugModel>
+    </model>

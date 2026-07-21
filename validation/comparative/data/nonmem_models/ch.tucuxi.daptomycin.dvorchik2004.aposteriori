@@ -1,0 +1,26 @@
+$INCLUDE general.header
+
+$PROBLEM IMATINIB Model Predictions Etude PK-PD GIST. A posteriori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV MDV age bodyweight CLcr temperature sex RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.daptomycin.dvorchik2004.pkmodel
+
+$ERROR
+W = 4730
+Y=F + W * EPS(1)
+IPRED=F
+
+
+$OMEGA 0.306 STANDARD FIX
+$OMEGA 0.567 STANDARD FIX
+$OMEGA 0.652 STANDARD FIX
+$OMEGA 0.191 STANDARD FIX
+
+
+$SIGMA
+1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.footer
