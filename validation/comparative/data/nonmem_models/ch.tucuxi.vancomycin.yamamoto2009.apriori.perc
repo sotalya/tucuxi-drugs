@@ -1,0 +1,31 @@
+$INCLUDE general.header
+
+$PROBLEM Vancomycin for gram-positive infected patients (or not). A priori percentiles.
+
+$INPUT ID TIME EVID AMT CMT SS II DV age bodyweight CLcr gram_positive RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.yamamoto2009.pkmodel
+
+
+$ERROR
+
+Y = F * (1 + THETA(5) * ETA(5))
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+
+
+$OMEGA STANDARD CORRELATION BLOCK(4) FIX
+0.375
+0 0.182
+0 0 0.192
+0 0 0 0.728
+
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+$INCLUDE general.apriori.perc.footer

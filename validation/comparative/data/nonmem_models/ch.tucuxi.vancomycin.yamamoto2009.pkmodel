@@ -1,0 +1,34 @@
+
+$SUB ADVAN3 TRANS4
+
+$PK
+
+CCR = CLcr
+
+gr = gram_positive - 0.5
+
+PATH = 0
+IF (CCR.GT.85) PATH = 1
+
+TVCL = (THETA(1) * CCR + THETA(2)) * (1 - PATH) + THETA(3) * PATH;
+CL = TVCL * (1 + ETA(1))
+
+TVV1 = 0.206 * bodyweight;
+IF (gr.GT.0) TVV1 = THETA(4) * bodyweight;
+V1 = TVV1 * (1 + ETA(2))
+
+TVV2 = 39.4;
+IF (gr.GT.0) TVV2 = 60.6;
+V2 = TVV2 * (1 + ETA(4))
+
+TVQ = 8.81;
+Q = TVQ * (1 + ETA(3))
+
+S1 = V1 / 1000
+
+
+$THETA (0.0322) FIX; 1 CLcr on CL
+$THETA (0.32) FIX; 2 CL if infection
+$THETA (3.83) FIX; 3 CL if no infection
+$THETA (0.478) FIX ; 4 bodyweight on V1 when infection
+0.143 ; 5 Proportional residual error
