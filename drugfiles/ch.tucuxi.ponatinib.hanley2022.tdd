@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version='0.6' xsi:noNamespaceSchemaLocation='drugfile.xsd' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <history>
+        <revisions>
+            <revision>
+                <revisionAction>creation</revisionAction>
+                <revisionAuthorName>Yann Thoma</revisionAuthorName>
+                <institution>HEIG-VD, Yverdon</institution>
+                <email>yann.thoma@heig-vd.ch</email>
+                <date>2022-07-15</date>
+                <comments/>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Thierry Buclin</revisionAuthorName>
+                <institution>CHUV Service of clinical pharmacology, Lausanne</institution>
+                <email>thierry.buclin@chuv.ch</email>
+                <date>2022-07-19</date>
+                <comments/>
+            </revision>
+            <revision>
+                <revisionAction>modification</revisionAction>
+                <revisionAuthorName>Guillaume Jeanneret</revisionAuthorName>
+                <institution>HEIG-VD</institution>
+                <email>guillaume.jeanneret@heig-vd.ch</email>
+                <date>2025-08-20</date>
+                <comments>
+                    <comment lang='en'>Added DOI and BibTex references. Harmonized covariate settings.</comment>
+                </comments>
+            </revision>
+        </revisions>
+    </history>
+    <head>
+        <drug>
+            <atcs>
+                <atc>L01EA05</atc>
+            </atcs>
+            <activeSubstances>
+                <activeSubstance>ponatinib</activeSubstance>
+            </activeSubstances>
+            <drugName>
+                <name lang='en'>Ponatinib</name>
+                <name lang='fr'>Ponatinib</name>
+            </drugName>
+            <drugDescription>
+                <desc lang='en'>Ponatinib is an oral, small-molecule, tyrosine kinase inhibitor (TKI) with activity against native and mutated BCR-ABL1, including the T315I mutant, which is resistant to all other TKIs approved for use in patients      with chronic myeloid leukemia (CML) or Philadelphia chromosome–positive (Ph+) acute lymphoblastic leukemia (ALL).</desc>
+                <desc lang='fr'>Le ponatinib est un inhibiteur oral de la tyrosine kinase (TKI), de petite molécule, actif contre BCR-ABL1 natif et muté, y compris la mutation T315I, qui est résistante à tous les autres TKI approuvés pour une utilisation chez les patients atteints de leucémie myéloïde chronique (LMC) ou de leucémie aiguë lymphoblastique (LAL) Philadelphia chromosome positif (Ph+).</desc>
+            </drugDescription>
+            <tdmStrategy>
+                <text lang='en'>TDM is advised to secure efficacy while preventing dose-dependent toxicities, such as vascular occlusions or neutropenia. The best predictive PK/PD index is trough concentration at steady-state, which should be maintained above 21 or 23 µg/L to ensure optimal efficacy, according to various sources; trough levels above 40 µg/L seem to be associated with an increased risk of toxicity.</text>
+                <text lang='fr'>La TDM est conseillée afin de garantir l’efficacité tout en prévenant les toxicités dose-dépendantes, telles que les occlusions vasculaires ou la neutropénie. Le meilleur indice PK/PD prédictif est la concentration résiduelle à l’état d’équilibre, qui doit être maintenue au-dessus de 21 ou 23 µg/L pour assurer une efficacité optimale, selon diverses sources ; des concentrations résiduelles supérieures à 40 µg/L semblent être associées à un risque accru de toxicité.</text>
+            </tdmStrategy>
+        </drug>
+        <study>
+            <studyName>
+                <name lang='en'>Population Pharmacokinetics of Ponatinib in Healthy Adult Volunteers and Patients With Hematologic Malignancies and Model-Informed Dose Selection for Pediatric Development</name>
+            </studyName>
+            <studyAuthors>Michael J. Hanley, Paul M. Diderichsen, Narayana Narasimhan, Shouryadeep Srivastava, Neeraj Gupta, and Karthik Venkatakrishnan</studyAuthors>
+            <description>
+                <desc lang='en'>This population pharmacokinetic analysis was conducted under the responsibility of the manufacturer with 2637 available PK samples from 260 adult patients and healthy volunteers included in phase 1, 1/2, and 3 ponatinib trials. It aimed at describing ponatinib absorption and disposition average PK parameters and variability, and assessing the influence of clinically relevant covariates on population PK parameters. Additionally, the final PK model was adapted for children to support dose selection for pediatric development.</desc>
+            </description>
+            <references>
+                <reference type='bibtex'>
+                    <![CDATA[@article{Hanley2021,
+                                                              title = {Population Pharmacokinetics of Ponatinib in Healthy Adult Volunteers and Patients With Hematologic Malignancies and Model-Informed Dose Selection for Pediatric Development},
+                                                              journal = {Journal of Clinical Pharmacology},
+                                                              volume = {61},
+                                                              number = {3},
+                                                              pages = {376–386},
+                                                              year = {2021},
+                                                              doi = {10.1002/jcph.1990},
+                                                              url = {https://doi.org/10.1002/jcph.1990},
+                                                              author = {Michael J. Hanley and Paul M. Diderichsen and Narayana K. R. and others},
+                                                              keywords = {Ponatinib, Pharmacokinetics, Hematologic malignancies, Pediatric dosing, Population modeling},
+                                                              abstract = {Ponatinib, a BCR-ABL1 inhibitor, is approved for the treatment of adults with chronic myeloid leukemia or Philadelphia chromosome–positive acute lymphoblastic leukemia. This study aimed to develop a population pharmacokinetic model for ponatinib and its active metabolite, AP24534, to inform dosing recommendations across age groups. Data from healthy adult volunteers and patients with hematologic malignancies were analyzed using nonlinear mixed-effects modeling. The final model incorporated a two-compartment disposition model with first-order absorption and elimination. Covariate analysis identified body weight and age as significant predictors of clearance. Model-based simulations suggested that the current adult dosing regimen may provide adequate exposure in pediatric populations, but adjustments may be necessary for younger children. These findings support the use of model-informed approaches to optimize dosing regimens for ponatinib in pediatric patients.}
+                                                            }]]>
+                </reference>
+                <reference type='doi'>
+                    <![CDATA[https://doi.org/10.1002/jcph.1990]]>
+                </reference>
+            </references>
+        </study>
+        <comments/>
+    </head>
+    <drugModel>
+        <drugId>ponatinib</drugId>
+        <drugModelId>ch.tucuxi.ponatinib.hanley2022</drugModelId>
+        <domain>
+            <description>
+                <desc lang='en'>Adult patients, both healthy volunteers and patients with hematologic malignancies, treated with ponatinib, aged 19-85 years, weight 40-152 kg, creatinine clearance 27-296 mL/min.</desc>
+                <desc lang='fr'>Patients adultes, à la fois volontaires sains et patients atteints de malignités hématologiques, traités par ponatinib, âgés de 19 à 85 ans, pesant de 40 à 152 kg, avec une clairance de la créatinine de 27 à 296 mL/min.</desc>
+            </description>
+            <constraints>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population aged from 19 to 85 years.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population agée de 19 à 85 ans.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((age >= 19) && (age <= 85));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>soft</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population weighing between 40 and 160 kg.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population pesant entre 40 et 160 kg.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>bodyweight</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((bodyweight >= 40) && (bodyweight <= 160));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+                <constraint>
+                    <constraintType>hard</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The study includes a population with creatinine clearance between 27 and 296 mL/min.</text>
+                        <text lang='fr'>L&apos;étude est basée sur une population ayant une clairance de la créatinine comprise entre 27 et 296 mL/min.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>clcr</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return ((clcr >= 27) && (clcr <= 296));
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </checkOperation>
+                    <comments/>
+                </constraint>
+            </constraints>
+        </domain>
+        <covariates>
+            <covariate>
+                <covariateId>age</covariateId>
+                <covariateName>
+                    <name lang='en'>age</name>
+                    <name lang='fr'>âge</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s age in years.</desc>
+                    <desc lang='fr'>Âge du patient en années.</desc>
+                </description>
+                <unit>y</unit>
+                <covariateType>ageInYears</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>y</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>49</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Age must be positive.</text>
+                        <text lang='fr'>L&apos;âge doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (age >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>bodyweight</covariateId>
+                <covariateName>
+                    <name lang='en'>body weight</name>
+                    <name lang='fr'>poids</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s body weight in kg.</desc>
+                    <desc lang='fr'>Poids du patient en kg.</desc>
+                </description>
+                <unit>kg</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>77</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Body weight must be positive.</text>
+                        <text lang='fr'>Le poids doit être positif.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>bodyweight</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (bodyweight >= 0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+            <covariate>
+                <covariateId>clcr</covariateId>
+                <covariateName>
+                    <name lang='en'>creatinine clearance</name>
+                    <name lang='fr'>clairance de la créatinine</name>
+                </covariateName>
+                <description>
+                    <desc lang='en'>Patient&apos;s creatinine clearance in mL/min.</desc>
+                    <desc lang='fr'>Clairance de la créatinine du patient en mL/min.</desc>
+                </description>
+                <unit>ml/min</unit>
+                <covariateType>standard</covariateType>
+                <dataType>double</dataType>
+                <interpolationType>linear</interpolationType>
+                <refreshPeriod>
+                    <unit>d</unit>
+                    <value>1</value>
+                </refreshPeriod>
+                <covariateValue>
+                    <standardValue>107</standardValue>
+                </covariateValue>
+                <validation>
+                    <errorMessage>
+                        <text lang='en'>Creatinine clearance must be positive.</text>
+                        <text lang='fr'>La clairance de la créatinine doit être positive.</text>
+                    </errorMessage>
+                    <operation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>clcr</id>
+                                    <type>double</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[
+                                return (clcr > 0.0);
+                                ]]>
+                            </code>
+                        </softFormula>
+                        <comments/>
+                    </operation>
+                    <comments/>
+                </validation>
+                <comments/>
+            </covariate>
+        </covariates>
+        <activeMoieties>
+            <activeMoiety>
+                <activeMoietyId>ponatinib</activeMoietyId>
+                <activeMoietyName>
+                    <name lang='en'>Ponatinib</name>
+                </activeMoietyName>
+                <unit>mg/l</unit>
+                <analyteIdList>
+                    <analyteId>ponatinib</analyteId>
+                </analyteIdList>
+                <analytesToMoietyFormula>
+                    <hardFormula>direct</hardFormula>
+                    <comments/>
+                </analytesToMoietyFormula>
+                <targets>
+                    <target>
+                        <targetType>residual</targetType>
+                        <targetValues>
+                            <unit>ug/l</unit>
+                            <min>
+                                <standardValue>20</standardValue>
+                            </min>
+                            <max>
+                                <standardValue>30</standardValue>
+                            </max>
+                            <best>
+                                <standardValue>25</standardValue>
+                            </best>
+                            <toxicityAlarm>
+                                <standardValue>45</standardValue>
+                            </toxicityAlarm>
+                            <inefficacyAlarm>
+                                <standardValue>15</standardValue>
+                            </inefficacyAlarm>
+                        </targetValues>
+                        <comments>
+                            <comment lang='en'>Trough concentrations below 15 µg/L at steady-state involve a definite risk of therapeutic escape; trough concentrations above 45 µg/L increase the risks of toxic effects.</comment>
+                        </comments>
+                    </target>
+                </targets>
+            </activeMoiety>
+        </activeMoieties>
+        <analyteGroups>
+            <analyteGroup>
+                <groupId>ponatinib</groupId>
+                <pkModelId>linear.2comp.macro</pkModelId>
+                <analytes>
+                    <analyte>
+                        <analyteId>ponatinib</analyteId>
+                        <unit>mg/l</unit>
+                        <molarMass>
+                            <value>532.57</value>
+                            <unit>g/mol</unit>
+                        </molarMass>
+                        <description>
+                            <desc lang='en'>Ponatinib is the only active component</desc>
+                        </description>
+                        <errorModel>
+                            <errorModelType>proportional</errorModelType>
+                            <sigmas>
+                                <sigma>
+                                    <standardValue>0.149</standardValue>
+                                </sigma>
+                            </sigmas>
+                            <comments/>
+                        </errorModel>
+                        <comments/>
+                    </analyte>
+                </analytes>
+                <dispositionParameters>
+                    <parameters>
+                        <parameter>
+                            <parameterId>CL</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>34.28</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>exponential</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.4804</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>CL shall be positive number</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>CL</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return CL > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V1</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>838.6</standardValue>
+                                <aprioriComputation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>age</id>
+                                                <type>double</type>
+                                            </input>
+                                            <input>
+                                                <id>bodyweight</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return 838.6 * Math.pow((age/49),0.6447) * Math.pow((bodyweight/77.15), 0.5038);
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </aprioriComputation>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>exponential</bsvType>
+                                <stdDevs>
+                                    <stdDev>0.4233</stdDev>
+                                </stdDevs>
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>V1 shall be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V1</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V1 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>V2</parameterId>
+                            <unit>l</unit>
+                            <parameterValue>
+                                <standardValue>347.4</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>none</bsvType>
+                                <stdDevs />
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>V2 shall be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>V2</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return V2 > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                        <parameter>
+                            <parameterId>Q</parameterId>
+                            <unit>l/h</unit>
+                            <parameterValue>
+                                <standardValue>17.21</standardValue>
+                            </parameterValue>
+                            <bsv>
+                                <bsvType>none</bsvType>
+                                <stdDevs />
+                            </bsv>
+                            <validation>
+                                <errorMessage>
+                                    <text lang='en'>Q shall be positive</text>
+                                </errorMessage>
+                                <operation>
+                                    <softFormula>
+                                        <inputs>
+                                            <input>
+                                                <id>Q</id>
+                                                <type>double</type>
+                                            </input>
+                                        </inputs>
+                                        <code>
+                                            <![CDATA[
+                                            return Q > 0.0;
+                                            ]]>
+                                        </code>
+                                    </softFormula>
+                                    <comments/>
+                                </operation>
+                                <comments/>
+                            </validation>
+                            <comments/>
+                        </parameter>
+                    </parameters>
+                    <correlations>
+                        <correlation>
+                            <param1>CL</param1>
+                            <param2>V1</param2>
+                            <value>0.6368</value>
+                            <comments/>
+                        </correlation>
+                    </correlations>
+                </dispositionParameters>
+            </analyteGroup>
+        </analyteGroups>
+        <formulationAndRoutes>
+            <formulationAndRoute>
+                <formulationAndRouteId>id0</formulationAndRouteId>
+                <formulation>oralSolution</formulation>
+                <administrationName>tablets</administrationName>
+                <administrationRoute>oral</administrationRoute>
+                <absorptionModel>extra.lag</absorptionModel>
+                <dosages>
+                    <analyteConversions>
+                        <analyteConversion>
+                            <analyteId>ponatinib</analyteId>
+                            <factor>1</factor>
+                        </analyteConversion>
+                    </analyteConversions>
+                    <availableDoses>
+                        <unit>mg</unit>
+                        <default>
+                            <standardValue>45</standardValue>
+                        </default>
+                        <rangeValues>
+                            <from>
+                                <standardValue>15</standardValue>
+                            </from>
+                            <to>
+                                <standardValue>90</standardValue>
+                            </to>
+                            <step>
+                                <standardValue>15</standardValue>
+                            </step>
+                        </rangeValues>
+                        <fixedValues>
+                            <value>15</value>
+                            <value>30</value>
+                            <value>45</value>
+                        </fixedValues>
+                    </availableDoses>
+                    <availableIntervals>
+                        <unit>h</unit>
+                        <default>
+                            <standardValue>24</standardValue>
+                        </default>
+                        <fixedValues>
+                            <value>12</value>
+                            <value>24</value>
+                            <value>48</value>
+                        </fixedValues>
+                    </availableIntervals>
+                    <comments/>
+                </dosages>
+                <absorptionParameters>
+                    <parameterSetAnalyteGroup>
+                        <analyteGroupId>ponatinib</analyteGroupId>
+                        <absorptionModel>extra.lag</absorptionModel>
+                        <parameterSet>
+                            <parameters>
+                                <parameter>
+                                    <parameterId>F</parameterId>
+                                    <unit>-</unit>
+                                    <parameterValue>
+                                        <standardValue>1</standardValue>
+                                    </parameterValue>
+                                    <bsv>
+                                        <bsvType>none</bsvType>
+                                        <stdDevs />
+                                    </bsv>
+                                    <validation>
+                                        <errorMessage>
+                                            <text lang='en'>F should be positive</text>
+                                        </errorMessage>
+                                        <operation>
+                                            <softFormula>
+                                                <inputs>
+                                                    <input>
+                                                        <id>F</id>
+                                                        <type>double</type>
+                                                    </input>
+                                                </inputs>
+                                                <code>
+                                                    <![CDATA[
+                                                    return F <= 1.0 and F > 0.0;
+                                                        ]]>
+                                                    </code>
+                                                </softFormula>
+                                                <comments/>
+                                            </operation>
+                                            <comments/>
+                                        </validation>
+                                        <comments>
+                                            <comment lang='en'>The absorption model of the publication has been simplified, keeping only the Ka with lag time component, and dropping the transit compartments component (with its variability) from the original analysis</comment>
+                                        </comments>
+                                    </parameter>
+                                    <parameter>
+                                        <parameterId>Ka</parameterId>
+                                        <unit>h-1</unit>
+                                        <parameterValue>
+                                            <standardValue>4.41</standardValue>
+                                        </parameterValue>
+                                        <bsv>
+                                            <bsvType>none</bsvType>
+                                            <stdDevs />
+                                        </bsv>
+                                        <validation>
+                                            <errorMessage>
+                                                <text lang='en'>Ka should be positive</text>
+                                            </errorMessage>
+                                            <operation>
+                                                <softFormula>
+                                                    <inputs>
+                                                        <input>
+                                                            <id>Ka</id>
+                                                            <type>double</type>
+                                                        </input>
+                                                    </inputs>
+                                                    <code>
+                                                        <![CDATA[
+                                                        return Ka > 0.0;
+                                                        ]]>
+                                                    </code>
+                                                </softFormula>
+                                                <comments/>
+                                            </operation>
+                                            <comments/>
+                                        </validation>
+                                        <comments/>
+                                    </parameter>
+                                    <parameter>
+                                        <parameterId>Tlag</parameterId>
+                                        <unit>h</unit>
+                                        <parameterValue>
+                                            <standardValue>3.932</standardValue>
+                                        </parameterValue>
+                                        <bsv>
+                                            <bsvType>none</bsvType>
+                                            <stdDevs />
+                                        </bsv>
+                                        <validation>
+                                            <errorMessage>
+                                                <text lang='en'>Tlag should be positive</text>
+                                            </errorMessage>
+                                            <operation>
+                                                <softFormula>
+                                                    <inputs>
+                                                        <input>
+                                                            <id>Tlag</id>
+                                                            <type>double</type>
+                                                        </input>
+                                                    </inputs>
+                                                    <code>
+                                                        <![CDATA[
+                                                        return Tlag >= 0.0;
+                                                        ]]>
+                                                    </code>
+                                                </softFormula>
+                                                <comments/>
+                                            </operation>
+                                            <comments/>
+                                        </validation>
+                                        <comments/>
+                                    </parameter>
+                                </parameters>
+                                <correlations />
+                            </parameterSet>
+                        </parameterSetAnalyteGroup>
+                    </absorptionParameters>
+                </formulationAndRoute>
+            </formulationAndRoutes>
+            <timeConsiderations>
+                <halfLife>
+                    <unit>h</unit>
+                    <duration>
+                        <standardValue>22</standardValue>
+                    </duration>
+                    <multiplier>10</multiplier>
+                    <comments>
+                        <comment lang='en'>The hallf life estimate is taken from the summary of product characteristics of Iclusig</comment>
+                    </comments>
+                </halfLife>
+                <outdatedMeasure>
+                    <unit>d</unit>
+                    <duration>
+                        <standardValue>28</standardValue>
+                    </duration>
+                    <comments>
+                        <comment lang='en'>To be checked</comment>
+                    </comments>
+                </outdatedMeasure>
+            </timeConsiderations>
+            <comments/>
+        </drugModel>
+    </model>
