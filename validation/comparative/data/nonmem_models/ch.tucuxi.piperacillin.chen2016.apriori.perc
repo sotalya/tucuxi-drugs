@@ -1,0 +1,30 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_Chen et al. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight CLCR age RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.piperacillin.chen2016.pkmodel
+
+
+$ERROR
+
+W = 0.0932
+Y = F + F * W*ETA(3)
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.311; ETA CL
+0 0.38; ETA V1
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+
+
+$INCLUDE general.apriori.perc.footer

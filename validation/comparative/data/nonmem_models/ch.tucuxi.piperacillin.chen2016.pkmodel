@@ -1,0 +1,19 @@
+
+$SUB ADVAN1 TRANS2
+
+$PK
+
+TVCL = THETA(1) +  THETA(2)**(CLCR/68.7)
+CL = TVCL * EXP(ETA(1))
+
+TVV  = THETA(3) + THETA(4)**(bodyweight/61.1)
+V = TVV * EXP(ETA(2))
+
+S1 = V/1000
+
+
+$THETA
+9.14 FIX; CL
+4.60 FIX; Impact of CLCR on CL
+12.2 FIX; V
+9.49 FIX; Impact of WT on V
