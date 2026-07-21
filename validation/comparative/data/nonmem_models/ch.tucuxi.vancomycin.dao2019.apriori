@@ -1,0 +1,24 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_Dao et al.A priori prediction
+
+$INPUT ID TIME EVID AMT CMT SS II DV ga ageInWeeks bodyweight creatinine RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.dao2019.pkmodel
+
+; No residual error, as we just compute an apriori prediction
+$ERROR
+
+Y = F
+IPRED = F
+
+
+$OMEGA BLOCK(1) FIX
+0 ; ETA CL
+
+; No residual error, as we just compute an apriori prediction
+$SIGMA 0 FIXED;
+
+$INCLUDE general.apriori.footer

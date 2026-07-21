@@ -1,0 +1,28 @@
+
+$SUB ADVAN1 TRANS2
+
+$PK
+
+HILL = THETA(5)
+T50 = THETA(6)
+PMA = ga + ageInWeeks
+
+TVCL = THETA(1) * (bodyweight/1)**THETA(3) * (54/creatinine)**THETA(4) *  ((PMA**HILL)/(PMA**HILL + T50**HILL))
+CL = TVCL * EXP(ETA(1))
+
+TVV = THETA(2) * bodyweight
+V = TVV
+
+
+S1 = V / 1000
+
+
+$THETA
+0.273 FIX; 1 CL
+0.628 FIX; 2 V
+0.438 FIX ; 3 bodyweight on CL
+0.473 FIX ; 4 creatinine on CL
+3.54 FIX ; 5 HILL
+46.4 FIX ; 6 T50
+1980 FIX ; 7 Additive residual error, in ug/l
+0.236 FIX ; 8 Proportional residual error

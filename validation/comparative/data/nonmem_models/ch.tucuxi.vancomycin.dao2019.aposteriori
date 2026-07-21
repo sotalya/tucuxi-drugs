@@ -1,0 +1,22 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_Dao et al. A posteriori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV MDV ga ageInWeeks bodyweight creatinine RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.dao2019.pkmodel
+
+$ERROR
+IPRED=F
+W = SQRT(IPRED * IPRED * THETA(8) * THETA(8) + THETA(7) * THETA(7))
+Y = IPRED + W*EPS(1)
+
+
+$OMEGA STANDARD CORRELATION BLOCK(1) FIX
+0.226 ; IIV CL
+
+$SIGMA 1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.footer

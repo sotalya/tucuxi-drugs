@@ -1,0 +1,30 @@
+$INCLUDE general.header
+
+$PROBLEM PK_Model_Dao et al. A priori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV ga ageInWeeks bodyweight creatinine RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.dao2019.pkmodel
+
+
+$ERROR
+
+IPRED=F
+W = SQRT(IPRED * IPRED * THETA(8) * THETA(8) + THETA(7) * THETA(7)) * ETA(2)
+Y = IPRED + W
+
+
+$OMEGA STANDARD CORRELATION BLOCK(1) FIX
+0.226 ; IIV CL
+
+
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+
+
+$INCLUDE general.apriori.perc.footer
