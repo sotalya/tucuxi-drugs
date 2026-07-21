@@ -1,0 +1,23 @@
+$INCLUDE general.header
+
+$PROBLEM IMATINIB Model Predictions Etude PK-PD GIST. A posteriori prediction.
+
+$INPUT ID TIME EVID AMT CMT SS II DV MDV age bodyweight CLcr RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.staatz2005.pkmodel
+
+$ERROR
+W = SQRT(F * F * THETA(5) * THETA(5)  + THETA(4) * THETA(4))
+Y=F + W*EPS(1)
+IPRED=F
+
+$OMEGA STANDARD CORRELATION BLOCK(2) FIX
+0.25; IIV CL
+0.0 0.33; IIV V
+
+$SIGMA
+1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.footer

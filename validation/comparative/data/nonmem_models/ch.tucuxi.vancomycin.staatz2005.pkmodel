@@ -1,0 +1,20 @@
+
+$SUB ADVAN1 TRANS2
+
+$PK
+
+TVCL = THETA(1) * ( 1 +THETA(2) * (CLcr - 60));
+CL=TVCL * (1 + ETA(1))
+
+TVV = THETA(3) * bodyweight;
+V=TVV * (1 + ETA(2))
+KEL=CL/V
+S1=V/1000
+
+
+$THETA
+2.94 FIX   ; CL
+0.0209 FIX ; CLCR
+1.15 FIX   ; V
+1600 ; Additive residual error, in ug/l
+0.15 ; Proportional residual error

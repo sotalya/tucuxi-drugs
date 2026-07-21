@@ -1,0 +1,24 @@
+$INCLUDE general.header
+
+$PROBLEM IMATINIB Model Predictions Etude PK-PD GIST
+$INPUT ID TIME EVID AMT CMT SS II DV age bodyweight CLcr RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.staatz2005.pkmodel
+
+; No residual error, as we just compute an apriori prediction
+$ERROR
+Y=F
+IPRED=F
+
+
+; No inter-individual variability, as we just compute an apriori prediction
+$OMEGA BLOCK(2) FIX
+0; IIV CL
+0 0; IIV V
+
+; No residual error, as we just compute an apriori prediction
+$SIGMA 0 FIXED;
+
+$INCLUDE general.apriori.footer
