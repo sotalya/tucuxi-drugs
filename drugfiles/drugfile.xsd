@@ -60,8 +60,9 @@
         <xs:restriction base="xs:normalizedString">
             <xs:enumeration value="direct" />
             <xs:enumeration value="linear" />
-            <xs:enumeration value="sigmoid" />
-            <xs:enumeration value="tanh" />
+            <xs:enumeration value="backward" />
+        <!--    <xs:enumeration value="sigmoid" />
+            <xs:enumeration value="tanh" /> -->
         </xs:restriction>
     </xs:simpleType>
 
