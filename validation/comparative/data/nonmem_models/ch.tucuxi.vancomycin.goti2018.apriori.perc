@@ -1,0 +1,30 @@
+$INCLUDE general.header
+
+$PROBLEM Vancomycin for hemodialysis patients. A priori percentiles.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight creatinine_concentra creatinine age sex clcr hemodialysis RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.goti2018.pkmodel
+
+
+$ERROR
+
+Y = F + ETA(4) * SQRT(F * F * THETA(7) * THETA(7)  + THETA(6) * THETA(6))
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+
+
+$OMEGA STANDARD CORRELATION BLOCK(3) FIX
+0.398
+0 0.816
+0 0 0.571
+
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+$INCLUDE general.apriori.perc.footer

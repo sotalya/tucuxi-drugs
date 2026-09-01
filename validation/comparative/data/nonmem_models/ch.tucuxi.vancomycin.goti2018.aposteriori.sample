@@ -1,0 +1,25 @@
+$INCLUDE general.header
+
+$PROBLEM Vancomycin for hemodialysis patients. A posteriori prediction at sample time.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight creatinine_concentra creatinine age sex clcr hemodialysis RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.goti2018.pkmodel
+
+$ERROR
+W = SQRT(F * F * THETA(7) * THETA(7) + THETA(6) * THETA(6))
+Y=F + W*EPS(1)
+IPRED = F
+
+$OMEGA STANDARD CORRELATION BLOCK(3) FIX
+0.398
+0 0.816
+0 0 0.571
+
+
+$SIGMA
+1.0 STANDARD FIX
+
+$INCLUDE general.aposteriori.sample.footer
