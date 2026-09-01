@@ -532,7 +532,8 @@ class Nonmem:
 
         # inputting samples
         if self.parametersType == ParametersTypeEnum.aposteriori:
-            self.load_samples_as_records(query, request, nmds, inf_covariate_values, with_mdv)
+            self.load_samples_as_records_change(query, request, nmds, inf_covariate_values, with_mdv, drug)
+            # self.load_samples_as_records(query, request, nmds, inf_covariate_values, with_mdv)
 
         f = open('data.csv', 'w')
         f.write(nmds.get_head())
@@ -544,6 +545,14 @@ class Nonmem:
             #     print(rec.get_rec())
             f.write('\n' + rec.get_rec())
         f.close()
+
+    @staticmethod
+    def filter_covariate_name(name: str):
+        # Truncate the covariate name to 20 characters, as NONMEM has a limit on the length of variable names.
+        if len(name) > 20:
+            print(Fore.YELLOW + "Warning: Covariate name \"{name}\" is longer than 20 characters. Truncating to 20 characters.".format(name=name))
+            return name[:20]
+        return name
 
     @staticmethod
     def load_covariate_names_and_defaults(drug):
@@ -562,9 +571,9 @@ class Nonmem:
         for cov in drug.covariates:
             base, ext = os.path.splitext(cov.covariateId)
             if ext != '':
-                covariate_names.append(ext[1:])
+                covariate_names.append(Nonmem.filter_covariate_name(ext[1:]))
             else:
-                covariate_names.append(base)
+                covariate_names.append(Nonmem.filter_covariate_name(base))
             covariate_defaults.append(float(cov.defaultvalue))
         # check intake valid
         if drug.formulationAndRoutes[0].absorptionModel == 'infusion':
@@ -657,6 +666,50 @@ class Nonmem:
         cmt = '.'
 
         for s in query.drugs[0].samples:
+            sampletime = s.sampledate
+            # starttime = datetime.datetime.strptime(dataset.dosages[0].startdate, '%Y-%m-%dT%H:%M:%S')
+            elapsedtime = sampletime - self.dstart
+            # intervaldelta = datetime.timedelta(hours=float(dataset.dosages[0].interval))
+            # period = math.floor(elapsedtime.total_seconds()/intervaldelta.total_seconds())
+            # t = elapsedtime.total_seconds() % intervaldelta.total_seconds()/3600
+
+            if s.unit == 'mg/l':
+                dv1 = float(s.concentration) * 1000
+            else:
+                dv1 = float(s.concentration)
+
+            if request.drugModel.errorModel == 'exponential':
+                dv1 = math.log(dv1)
+
+#             if self.c == False:
+            if with_mdv:
+                items = [1, elapsedtime.total_seconds()/3600.0, 0, '.', cmt, 0, '.', dv1, '0'] + covariate_values
+            else:
+                items = [1, elapsedtime.total_seconds()/3600.0, 0, '.', cmt, 0, '.', dv1] + covariate_values
+            nmds.records.append(NONMEMrecord(items))
+#             print     '\n1,{time},0,.,{cmt},0,.,{dv}{cov_values}'.format(cmt = CMT, time = t + 24 * period,
+    #             dv = str(dv1), cov_values = ',' + ",".join(map(str, inf_covariate_values)))
+#             f.write('\n1,{time},0,.,{cmt},0,.,{dv}{cov_values}'.format(cmt = CMT, time = t + 24 * period,
+    #             dv = str(dv1), cov_values = ',' + ",".join(map(str, inf_covariate_values))))
+
+
+    def load_samples_as_records_change(self, query, request, nmds, covariate_values, with_mdv, drug):
+        """
+        * This method translates a list of samples as records in the NONMEM data file
+
+            Args:
+                * request (Request): the request for this cycle
+                * nmds ([NONMEMrecord]): the rolling list of records that make up a
+                    NONMEM data file.
+                * covariate_values ([double]): Set of covariate values for the samples
+                    (WARNING! can be variable here)
+                * with_mdv (bool): If yes, add an MDV field after DV
+        """
+        cmt = '.'
+
+        for s in query.drugs[0].samples:
+            self.load_covariates_for_cycle(query, covariate_values, None, request, drug, s.sampledate)
+
             sampletime = s.sampledate
             # starttime = datetime.datetime.strptime(dataset.dosages[0].startdate, '%Y-%m-%dT%H:%M:%S')
             elapsedtime = sampletime - self.dstart
