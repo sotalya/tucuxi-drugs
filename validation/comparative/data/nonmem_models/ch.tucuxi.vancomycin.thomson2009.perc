@@ -1,0 +1,31 @@
+$INCLUDE general.header
+
+$PROBLEM Vancomycin Thomson 2009 model. A priori percentiles.
+
+$INPUT ID TIME EVID AMT CMT SS II DV bodyweight creatinine age sex CLcr RATE
+
+$INCLUDE general.dataimport
+
+$INCLUDE ch.tucuxi.vancomycin.thomson2009.pkmodel
+
+
+$ERROR
+
+Y = F + ETA(4) * SQRT(F * F * THETA(7) * THETA(7)  + THETA(6) * THETA(6))
+if (Y.LT.0) Y = 0
+IPRED=Y
+
+
+
+$OMEGA STANDARD CORRELATION BLOCK(4) FIX
+0.27
+0 0.15
+0 0 1.3
+0 0 0 0.49
+
+$OMEGA 1 FIX; EPS1 ; Replacement of SIGMA
+
+; Sigma is replaced by an additional Omega
+$SIGMA 0.0 STANDARD FIX
+
+$INCLUDE general.apriori.perc.footer
